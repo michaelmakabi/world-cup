@@ -76,7 +76,7 @@
 <body>
 <header>
   <h1>🏆 Claude World Cup 2026 — Judging Bulletin Board</h1>
-  <div class="sub">Avology Technologies · 28 submissions forwarded by Aakash Deep · Master Makabi's review console</div>
+  <div class="sub">Avology Technologies · 29 submissions forwarded by Aakash Deep · Master Makabi's review console</div>
 </header>
 
 <div class="bar">
@@ -355,6 +355,15 @@ const DATA=[
  tokens:"~20k–60k",time:"~2–4 hrs",
  why:"A reasonable efficiency idea, but it's a workflow + sample site rather than a built application — the lightest submission in the field.",
  cs:{complexity:8,claude:9,useful:10,complete:8,innovation:5,presentation:5}},
+
+{id:"surajtester",name:"Suraj Tester",email:"surajavology@gmail.com",project:"AI-Powered Bug Report Generator",
+ link:"mailto:surajavology@gmail.com",extra:[],
+ cred:"Anthropic API key + sample bug sheet (Loren AI bug sheet.xlsx) provided in the email — key withheld here; rotate it",tags:[],
+ summary:"A QA productivity tool that uses Claude AI to automatically generate professional, structured bug reports from multiple input sources — bug descriptions, bug sheets, spreadsheets, text files and screenshots. It analyzes context, writes bug titles/summaries, suggests severity & priority, produces expected-vs-actual results and steps to reproduce, and handles individual bugs or bulk bug-sheet uploads. Aimed at QA engineers, manual testers and small teams. NOTE: the submission is a written overview plus an Anthropic API key and a sample bug sheet — no hosted demo or repository link was included.",
+ claudeUse:"Claude is the core reasoning engine — understanding bug descriptions and testing context, interpreting uploaded sheets/screenshots, and producing standardized bug documentation. Integrated via the Anthropic API (submitter supplied a key).",
+ tokens:"~80k–180k",time:"~6–12 hrs",
+ why:"Targets a real, repetitive QA pain (bug documentation) with bulk-sheet processing and a thorough write-up. Held back on completeness because no live app or repo was provided to verify — only an overview, an API key and a sample sheet.",
+ cs:{complexity:11,claude:14,useful:14,complete:8,innovation:6,presentation:8}},
 ];
 
 /* ---------- logic ---------- */
@@ -362,7 +371,7 @@ const KEY="cwc2026_scores_v1";
 let store=JSON.parse(localStorage.getItem(KEY)||"{}");
 function save(){localStorage.setItem(KEY,JSON.stringify(store))}
 function csTotal(d){return Object.values(d.cs).reduce((a,b)=>a+b,0)}
-function youTotal(id){const s=store[id]&&store[id].cs;if(!s)return null;let any=false,t=0;for(const[k]of CRITS){const v=Number(s[k]);if(!isNaN(v)&&s[k]!=="" &&s[k]!=null){any=true;t+=v}}return any?t:null}
+function youTotal(id){const s=store[id]&&store[id].cs;if(!s)return null;let any=false,t=0;for(const[k]of CRITS){const v=Number(s[k]);if(!isNaN(v)&&s[k]!==""&&s[k]!=null){any=true;t+=v}}return any?t:null}
 function rankVal(d){const c=csTotal(d),y=youTotal(d.id);const mode=document.getElementById('rankBy').value;
   if(mode==='claude')return c; if(mode==='you')return y==null?-1:y; return y==null?c:(c+y)/2;}
 const medals=["🥇","🥈","🥉"];
