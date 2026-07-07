@@ -3,548 +3,343 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Claude World Cup 2026 — Judging Bulletin Board</title>
+<title>Claude World Cup 2026 — Master Makabi's Rankings</title>
 <style>
-  :root{
-    color-scheme: light;
+  :root{ color-scheme: light;
     --bg:#f6f7f9; --panel:#ffffff; --panel2:#f3f5f9; --line:#e0e4ec;
-    --txt:#1c2230; --mut:#626b7b; --accent:#c4592f; --accent2:#3556c9;
-    --gold:#9a7400; --silver:#8a909c; --bronze:#a4622e; --good:#1f9d6b;
-    --inkbox:#fbfcfe;
-  }
+    --txt:#1c2230; --mut:#626b7b; --accent:#c4592f; --mk:#2f6f4f; --claude:#3556c9;
+    --gold:#9a7400; --inkbox:#fbfcfe; --good:#1f9d6b; }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--txt);font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.5}
   header{padding:26px 28px 18px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#ffffff,#f3f5f9)}
-  h1{margin:0 0 4px;font-size:24px;letter-spacing:.3px}
+  h1{margin:0 0 4px;font-size:23px;letter-spacing:.3px}
   .sub{color:var(--mut);font-size:13px}
-  .bar{display:flex;flex-wrap:wrap;gap:14px;align-items:center;padding:14px 28px;border-bottom:1px solid var(--line);background:var(--panel);position:sticky;top:0;z-index:20}
+  .bar{display:flex;flex-wrap:wrap;gap:14px;align-items:center;padding:12px 28px;border-bottom:1px solid var(--line);background:var(--panel);position:sticky;top:0;z-index:20}
   .bar label{font-size:12px;color:var(--mut);margin-right:6px}
   select,input[type=search]{background:#fff;color:var(--txt);border:1px solid var(--line);border-radius:8px;padding:7px 10px;font-size:13px}
   input[type=search]{min-width:220px}
   .btn{background:#fff;border:1px solid var(--line);color:var(--txt);padding:7px 12px;border-radius:8px;cursor:pointer;font-size:13px}
   .btn:hover{border-color:var(--accent)}
   .stats{margin-left:auto;font-size:12px;color:var(--mut)}
-  .legend{padding:14px 28px;color:var(--mut);font-size:12.5px;border-bottom:1px solid var(--line);background:#eef1f6}
+  .legend{padding:13px 28px;color:var(--mut);font-size:12.5px;border-bottom:1px solid var(--line);background:#eef1f6}
   .legend b{color:var(--txt)}
-  .crit{display:inline-block;background:#fff;border:1px solid var(--line);border-radius:20px;padding:3px 10px;margin:3px 4px 0 0;font-size:11.5px}
-  .wrap{padding:20px 28px 80px;max-width:1180px;margin:0 auto}
-  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;margin:0 0 16px;overflow:hidden;box-shadow:0 1px 2px rgba(20,30,50,.04)}
-  .chead{display:flex;align-items:flex-start;gap:14px;padding:16px 18px;cursor:pointer}
-  .rank{flex:0 0 auto;width:54px;text-align:center}
-  .rank .num{font-size:26px;font-weight:800;line-height:1}
+  .wrap{padding:20px 28px 80px;max-width:1120px;margin:0 auto}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;margin:0 0 14px;overflow:hidden;box-shadow:0 1px 2px rgba(20,30,50,.04)}
+  .chead{display:flex;align-items:flex-start;gap:14px;padding:15px 18px;cursor:pointer}
+  .rank{flex:0 0 auto;width:50px;text-align:center}
+  .rank .num{font-size:24px;font-weight:800;line-height:1}
   .rank .lbl{font-size:10px;color:var(--mut);text-transform:uppercase;letter-spacing:.5px}
-  .medal{font-size:30px;line-height:1}
+  .medal{font-size:28px;line-height:1}
   .ctitle{flex:1 1 auto;min-width:0}
-  .ctitle h3{margin:0 0 2px;font-size:17px}
+  .ctitle h3{margin:0 0 2px;font-size:16.5px}
   .ctitle .who{color:var(--mut);font-size:12.5px}
+  .ctitle .what{font-size:12.5px;margin-top:3px;color:#3a4252}
   .tags{margin-top:6px}
   .pill{display:inline-block;font-size:10.5px;padding:2px 8px;border-radius:6px;margin:2px 5px 0 0;border:1px solid var(--line);color:var(--mut)}
   .pill.live{color:#0c3b27;background:#d7f3e6;border-color:#aee3cd;font-weight:700}
   .pill.repo{color:#16245c;background:#dce4fb;border-color:#bdccf6;font-weight:700}
   .pill.cred{color:#5a4500;background:#fbeec2;border-color:#f0db93;font-weight:700}
-  .scoreboxes{flex:0 0 auto;display:flex;gap:10px;align-items:center}
-  .sbox{text-align:center;background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:7px 12px;min-width:74px}
-  .sbox .v{font-size:20px;font-weight:800}
-  .sbox .k{font-size:10px;color:var(--mut);text-transform:uppercase;letter-spacing:.4px}
-  .sbox.claude .v{color:var(--accent)}
-  .sbox.you .v{color:var(--accent2)}
+  .pill.broken{color:#7a1b1b;background:#f7d9d9;border-color:#eeb4b4;font-weight:700}
+  .pill.verified{color:#0c3b27;background:#c9efdc;border-color:#94d9b7;font-weight:700}
+  .scoreboxes{flex:0 0 auto;display:flex;gap:9px;align-items:center}
+  .sbox{text-align:center;background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:6px 11px;min-width:70px}
+  .sbox .v{font-size:19px;font-weight:800}
+  .sbox .k{font-size:9.5px;color:var(--mut);text-transform:uppercase;letter-spacing:.4px}
+  .sbox.mk{background:#e9f5ee;border-color:#bfe3cd}
+  .sbox.mk .v{color:var(--mk)}
+  .sbox.claude .v{color:var(--claude)}
   .body{display:none;border-top:1px solid var(--line);padding:18px;background:var(--panel2)}
   .body.open{display:block}
-  .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}
   @media(max-width:760px){.grid{grid-template-columns:1fr}.scoreboxes{flex-direction:column;gap:6px}}
   .lab{font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--mut);margin:0 0 4px}
-  .val{font-size:13.5px;margin:0 0 12px}
-  a{color:var(--accent2);text-decoration:none;word-break:break-all}
+  .note{font-size:14px;line-height:1.55;background:#fff;border:1px solid var(--line);border-left:3px solid var(--mk);border-radius:8px;padding:11px 13px;margin-bottom:12px;color:#26303f}
+  a{color:var(--claude);text-decoration:none;word-break:break-all}
   a:hover{text-decoration:underline}
-  .cred-box{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;background:#fff8e6;border:1px solid #f0db93;border-radius:8px;padding:8px 10px;color:#6b5200}
-  table.sc{width:100%;border-collapse:collapse;margin-top:6px;font-size:12.5px}
-  table.sc th,table.sc td{border:1px solid var(--line);padding:6px 8px;text-align:center}
+  .cred-box{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;background:#fff8e6;border:1px solid #f0db93;border-radius:8px;padding:8px 10px;color:#6b5200;margin-top:6px}
+  table.sc{width:100%;border-collapse:collapse;margin-top:2px;font-size:12.5px}
+  table.sc th,table.sc td{border:1px solid var(--line);padding:5px 8px;text-align:center}
   table.sc th{background:#eef1f6;color:var(--mut);font-weight:600;font-size:11px}
   table.sc td.c1{text-align:left;color:var(--mut)}
-  table.sc input{width:52px;background:var(--inkbox);color:var(--accent2);border:1px solid var(--line);border-radius:6px;padding:4px;text-align:center;font-size:12.5px}
   .tot td{font-weight:800;background:#eef1f6}
-  .note{margin-top:10px}
-  .note textarea{width:100%;min-height:48px;background:var(--inkbox);color:var(--txt);border:1px solid var(--line);border-radius:8px;padding:8px;font-size:13px;resize:vertical}
-  .estrow{display:flex;gap:22px;flex-wrap:wrap;margin:4px 0 12px}
-  .est{background:var(--inkbox);border:1px solid var(--line);border-radius:8px;padding:8px 12px;font-size:12.5px}
-  .est b{color:var(--accent)}
-  .why{border-left:3px solid var(--accent);padding-left:12px;margin:0 0 12px}
-  .disclaimer{font-size:11.5px;color:var(--mut);font-style:italic;margin-top:8px}
+  .val{font-size:13.5px;margin:0 0 10px}
   .foot{color:var(--mut);font-size:12px;text-align:center;padding:20px}
 </style>
 </head>
 <body>
 <header>
-  <h1>🏆 Claude World Cup 2026 — Judging Bulletin Board</h1>
-  <div class="sub">Avology Technologies · 38 submissions forwarded by Aakash Deep · Master Makabi's review console</div>
+  <h1>🏆 Claude World Cup 2026 — Master Makabi's Rankings</h1>
+  <div class="sub">Avology Technologies · judged by Master Makabi · ranked by what actually works and is usable now · Claude's score shown for reference</div>
 </header>
 
 <div class="bar">
   <div><label>Rank by</label>
     <select id="rankBy">
-      <option value="avg">Average (Claude + You)</option>
-      <option value="you">Your score</option>
-      <option value="claude" selected>Claude's score</option>
+      <option value="mk" selected>Makabi's score</option>
+      <option value="claude">Claude's score</option>
+      <option value="avg">Average</option>
     </select>
   </div>
   <div><input type="search" id="q" placeholder="Search name, project, tech…"></div>
   <button class="btn" id="expandAll">Expand all</button>
   <button class="btn" id="collapseAll">Collapse all</button>
-  <button class="btn" id="reset">Reset my scores</button>
   <div class="stats" id="stats"></div>
 </div>
 
 <div class="legend">
-  <b>Scoring rubric (100 pts):</b>
-  <span class="crit">Technical Complexity &amp; Depth — 20</span>
-  <span class="crit">Claude &amp; Vibe-Coding Mastery — 25</span>
-  <span class="crit">Real-World Usefulness &amp; Business Impact — 20</span>
-  <span class="crit">Completeness &amp; Working Deployment — 15</span>
-  <span class="crit">Innovation &amp; Originality — 10</span>
-  <span class="crit">Presentation &amp; Documentation — 10</span>
-  <div style="margin-top:8px">Claude's scores are <b>preliminary, derived from the submission emails</b> (not yet live-verified). Type your own per-criterion scores in each card — totals and the ranking update automatically and are saved in your browser.</div>
+  <b>How Makabi judged:</b> does it actually <b>work and can I use it right now</b> (weighted heaviest) · real practical value to LOREN AI · idea &amp; effort still get credit, but broken sign-ins, repo-only, and "couldn't test it" get docked hard.
+  <span style="display:block;margin-top:6px">Criteria (100): Complexity 20 · Claude/Vibe-coding 25 · Usefulness 20 · Completeness/Works-now 15 · Innovation 10 · Presentation 10. <b>✓ Verified</b> = Makabi opened and tested it this pass.</span>
 </div>
 
 <div class="wrap" id="cards"></div>
-<div class="foot">Auto-ranking judging console · scores saved locally in your browser · built with Claude / Loren AI</div>
+<div class="foot">Judged by Master Makabi · live-verification pass 2026-07-07 · built with Claude / Loren AI</div>
 
 <script>
 const MAX={complexity:20,claude:25,useful:20,complete:15,innovation:10,presentation:10};
-const CRITS=[["complexity","Complexity"],["claude","Claude / Vibe-coding"],["useful","Usefulness"],["complete","Completeness"],["innovation","Innovation"],["presentation","Presentation"]];
+const CRITS=[["complexity","Complexity"],["claude","Claude / Vibe-coding"],["useful","Usefulness"],["complete","Works now"],["innovation","Innovation"],["presentation","Presentation"]];
+const T=o=>Object.values(o).reduce((a,b)=>a+b,0);
 
 const DATA=[
-{id:"shallu",name:"Shallu Sharma",email:"shalluavology@gmail.com",project:"Avology Toolkit",
- link:"https://avology-toolkit.vercel.app/",extra:[["Demo video 1","https://www.loom.com/share/eda867fe9e7a40238379ac81ad76d35a"],["Demo video 2","https://www.loom.com/share/92656c568caf416a8c3861837e401b92"]],
- cred:"",tags:["live"],
- summary:"A lead-gen + GoHighLevel automation suite with 4 tools: A2P 10DLC SMS compliance, Prompt Studio (deploy-ready prompts for Retell AI voice agents & GHL bots, with an audit mode), and Campaign Copy Studio (SMS/email follow-up sequences with GHL personalization tokens and compliant opt-out).",
- claudeUse:"The deepest agentic build in the field: states the entire project was built from scratch with Claude Code, ships a custom MCP server with 5 tools (search_leads, score_lead, push_contact_to_ghl, generate_a2p_fields, get_ghl_contacts), PreToolUse + PostToolUse hooks for validation/audit logging, and a sub-agent pipeline (scraper → enricher → scorer → GHL push) orchestrated by Express routes.",
- tokens:"~500k–900k",time:"~25–40 hrs",
- why:"Directly automates Avology's real revenue engine (lead gen + GHL) and is the clearest demonstration of advanced Claude Code / MCP / sub-agent mastery — exactly what this competition is meant to reward.",
- cs:{complexity:18,claude:24,useful:18,complete:13,innovation:9,presentation:9}},
+{id:"shallu",name:"Shallu Sharma",email:"shalluavology@gmail.com",project:"Avology Toolkit",link:"https://avology-toolkit.vercel.app/",tags:["live","verified"],ct:91,
+ what:"Lead-gen + GoHighLevel automation suite, built with Claude Code + a custom MCP server, hooks and sub-agents.",
+ mk:{complexity:15,claude:25,useful:20,complete:10,innovation:10,presentation:10},
+ note:"Very useful tools... things we do need with every new customer onboarding for LOREN AI. So thumbs up to you on this, Shallu!"},
 
-{id:"reeya",name:"Reeya Sen",email:"reeya.avology@gmail.com",project:"GHL Agency Intelligence Platform",
- link:"https://beige-narwhal-409767.hostingersite.com/public/",extra:[["Login page","https://beige-narwhal-409767.hostingersite.com/login"]],
- cred:"admin@agency.com  /  Password123  (change immediately)",tags:["live","cred"],
- summary:"A full-stack 'Agency Operating System' in pure Core PHP (MVC, front controller, no framework) + MySQL. Captures GoHighLevel webhook traffic, auto-scores leads 0–100 via a verification engine, tracks sub-account health, and surfaces analytics (funnel, aging, forecasting, attribution). 7 DB tables, two-role RBAC (admin/user), goals/notifications, spam detection.",
- claudeUse:"A Claude Haiku AI layer powers client reports, workflow-health summaries and spam detection. Architecture, schema and the full build were planned with Claude.",
- tokens:"~400k–700k",time:"~20–35 hrs",
- why:"The most complete server-side product: deployed, real login, real database, RBAC and an AI intelligence layer sitting on top of the exact CRM (GHL) the agency runs on.",
- cs:{complexity:19,claude:22,useful:19,complete:14,innovation:8,presentation:8}},
+{id:"shahnawaz",name:"Shahnawaz",email:"shahnawaz.avology@gmail.com",project:"SchemaFlow",link:"https://schemaflow-5377.onrender.com/",extra:[["Demo store","https://devavology.myshopify.com/"]],cred:"Shopify Admin API key shared privately (redacted — rotate it)",tags:["live","cred","verified"],ct:81,
+ what:"Visual canvas that designs Shopify metaobjects/metafields and generates + deploys schema live.",
+ mk:{complexity:17,claude:20,useful:16,complete:14,innovation:10,presentation:9},
+ note:"This one genuinely impressed me — I built a schema right on the canvas and it spit out real Shopify JSON live, with a deploy button and starter templates ready to go. This is something we could put on client stores tomorrow. Excellent work, Shahnawaz."},
 
-{id:"rituraj",name:"Rituraj Mishra",email:"riturajmishra.avology@gmail.com",project:"AI Feature Forge",
- link:"https://github.com/rishabhmis93ar/ai-feature-forge",extra:[],
- cred:"",tags:["repo"],
- summary:"A SaaS that auto-generates complete, production-ready full-stack CRUD modules from a plain feature description, outputting a runnable React + Express app with exportable code and docs. Reduces a 4–8 hr/module task to under a minute. Stack: React 19/Vite/Tailwind, Node/Express/MongoDB/JWT.",
- claudeUse:"An 8-agent Claude 'software engineering team' (Architect, Database, Backend, Frontend, Documentation, QA, Security, Export) collaborating via shared memory and orchestration pipelines — a single request triggers the full generation workflow.",
- tokens:"~400k–800k",time:"~20–35 hrs",
- why:"Conceptually the most ambitious multi-agent system; a genuine exploration of structured AI software engineering. Marked down only because it ships as a repo + demo video rather than a hosted, clickable app.",
- cs:{complexity:18,claude:23,useful:16,complete:11,innovation:9,presentation:8}},
+{id:"komal",name:"Komal Bhardwaj",email:"komalbhardwaj.avology@gmail.com",project:"SEO All-in-One Toolkit",link:"https://seo-all-in-one-toolkit.netlify.app/",cred:"komalbhardwaj.avology@gmail.com / komalbhardwaj@1234",tags:["live","cred","verified"],ct:69,
+ what:"Logged-in SEO command center — 100+ tools across meta, schema, audits, keywords, technical.",
+ mk:{complexity:15,claude:19,useful:19,complete:14,innovation:9,presentation:9},
+ note:"Logged right in and there are 100+ real SEO tools in here, cleanly organized. It works and it maps straight onto what we sell clients. Practical and usable today — that's what I want. Great job, Komal."},
 
-{id:"shashi",name:"Shashi Thakur",email:"chunilal.avology@gmail.com",project:"CodeMedic AI",
- link:"https://codemedic-ai.vercel.app/",extra:[["GitHub","https://github.com/chunilalavology-debug/codemedic-ai"]],
- cred:"Self-signup (no credentials provided)",tags:["live","repo"],
- summary:"An AI-powered full-stack developer platform with 10 tools: AI code debugging, website scanner & SEO audit, GitHub repo analysis, image-to-code, dynamic section generation, API testing & validation, analysis-history tracking and dashboard analytics. Stack: Next.js/React/TS/Tailwind/shadcn, Supabase (DB + Auth), Groq SDK (Llama 3.3 70B) + Claude, Vercel.",
- claudeUse:"Claude is part of the AI integration layer alongside Groq; the whole platform was assembled with AI assistance.",
- tokens:"~300k–600k",time:"~18–30 hrs",
- why:"Breadth is exceptional — ten distinct developer tools in one deployed, authenticated app. A strong all-rounder for day-to-day engineering.",
- cs:{complexity:17,claude:20,useful:17,complete:14,innovation:8,presentation:8}},
+{id:"dheeraj",name:"Dheeraj Singh",email:"dheeraj.avology@gmail.com",project:"WP Guardian AI",link:"https://agent-6a38daf00e7ad8--benevolent-creponne-3e3c4d.netlify.app/",tags:["live","verified"],ct:78,
+ what:"Multi-agent site scanner — tech stack, SEO, security, Core Web Vitals, malware, one verdict.",
+ mk:{complexity:16,claude:19,useful:17,complete:14,innovation:9,presentation:8},
+ note:"I ran a live scan and it nailed it — detected the tech stack correctly and gave a real SEO score with pass/warn flags, from several agents at once. This is a client-audit tool we could use right now. Very nice, Dheeraj."},
 
-{id:"shahnawaz",name:"Shahnawaz",email:"shahnawaz.avology@gmail.com",project:"SchemaFlow",
- link:"https://schemaflow-5377.onrender.com/",extra:[["Demo Shopify store","https://devavology.myshopify.com/"]],
- cred:"Shopify Admin API key shared privately (redacted from public site — rotate it)",tags:["live","cred"],
- summary:"A visual design & deployment platform for Shopify stores — design metaobjects, metafields, theme sections and page-layout templates on an interactive canvas, then auto-generate the Shopify schema/theme files and one-click deploy to a live store. Removes the need to hand-write JSON/Liquid or open the Shopify Designer.",
- claudeUse:"Claude assisted across the lifecycle: architecture, schema-generation logic, implementation guidance, docs and UI/UX.",
- tokens:"~300k–550k",time:"~18–28 hrs",
- why:"Real e-commerce leverage: connects to and deploys against a live Shopify store via the Admin API — a polished, agency-grade tool.",
- cs:{complexity:16,claude:18,useful:17,complete:14,innovation:8,presentation:8}},
+{id:"sachin",name:"Sachin Mishra",email:"sachin.avology@gmail.com",project:"SEO Intelligence Agent",link:"https://seo-intelligence-agent.netlify.app",extra:[["Backend","https://seo-intelligence-agent.onrender.com"]],tags:["live","verified"],ct:75,
+ what:"Enter a company + keyword; an autonomous agent runs end-to-end SEO research and builds a report.",
+ mk:{complexity:15,claude:18,useful:17,complete:13,innovation:8,presentation:9},
+ note:"Typed in a company and keyword and the agent actually ran the whole pipeline live — research, ranking, competitor, final report. A real working autonomous agent, not a mockup. Impressive, Sachin."},
 
-{id:"ashish",name:"Ashish Yadav",email:"ashishyadav.avology@gmail.com",project:"Basecamp Flow (PM SaaS)",
- link:"https://basecamp-flow.netlify.app",extra:[],
- cred:"ashishyadav.avology@gmail.com  /  ashishyadav@123",tags:["live","cred"],
- summary:"A Basecamp-inspired project-management SaaS: Dashboard, Projects, Task Management (Kanban), Calendar, Team Management, Messages/Team Chat with read receipts/typing/file-sharing/voice notes, Settings and Admin Panel. Full RBAC (Owner/Admin/PM/Team/Client), AI assistant (task gen, project summaries, risk analysis), notifications, activity feed, and an integrations roadmap (Drive, Slack, Teams, Zoom, GitHub, Jira). Stack: React/TS, Tailwind, Supabase, realtime.",
- claudeUse:"Used Claude as product designer / SaaS architect — full architecture, DB schema, component structure, user flows and a screen-by-screen redesign into a premium SaaS.",
- tokens:"~350k–650k",time:"~20–32 hrs",
- why:"The broadest product surface of any submission — a credible internal ops + client-collaboration platform, deployed with a working admin login.",
- cs:{complexity:17,claude:17,useful:16,complete:14,innovation:7,presentation:8}},
+{id:"abhishek",name:"Abhishek Anand",email:"abhishekanand.avology@gmail.com",project:"BuddyFlow HR",link:"https://buddyflow-hr.netlify.app/",cred:"abhishekanand.avology@gmail.com / Abhishek@123",tags:["live","cred","verified"],ct:72,
+ what:"HR system — employees, attendance, leave, salary, messages, role-based login (Supabase).",
+ mk:{complexity:15,claude:17,useful:17,complete:14,innovation:8,presentation:9},
+ note:"Signed in and it's a real HR system with actual data — employees, attendance, leave, salary. Not just a landing page; it works end to end and it's usable for the team. Well done, Abhishek."},
 
-{id:"tushar",name:"Tushar Tyagi",email:"tushartyagi.avology@gmail.com",project:"FixMyCode (self-healing WP plugin)",
- link:"https://github.com/tushartyagiavology/fixmycode-wordpress-plugin",extra:[],
- cred:"Demo video (FixMyCodeDemo.mp4) attached",tags:["repo"],
- summary:"An autonomous self-healing runtime interceptor plugin for WordPress. It hooks the PHP engine to catch fatal errors (E_ERROR/E_PARSE — the 'White Screen of Death') before the site goes offline, extracts the exact file/line/context, generates a sandboxed AI risk assessment + plain-language root cause, and offers a one-click 'atomic mutation' patch that swaps the vulnerable code for a safe fix — all inside the WP admin. Stack: WP hooks + $wpdb/MySQL; Claude as architectural collaborator + Google AI Core API at runtime.",
- claudeUse:"Deep Claude integration in the build: designing the global PHP error-interception hook architecture without infinite recursion, refining API gateway logic, and prompt-engineering strict JSON output for reliable php json_decode() parsing.",
- tokens:"~300k–550k",time:"~18–30 hrs",
- why:"One of the most ambitious new entries — autonomous software self-healing, not just code generation, with genuinely deep Claude architectural involvement. Held back only because it ships as a repo + video (no hosted demo to click).",
- cs:{complexity:15,claude:17,useful:15,complete:11,innovation:9,presentation:8}},
+{id:"monika",name:"Monika Bisht",email:"monikaavology@gmail.com",project:"Avology PM Copilot",link:"https://avology-pm-copilot.netlify.app",tags:["live","verified"],ct:67,
+ what:"Assign client messages verbatim to the team + AI client-email and thread-summary helpers.",
+ mk:{complexity:13,claude:17,useful:18,complete:14,innovation:7,presentation:9},
+ note:"Really practical — it's already loaded with our actual team and lets me hand a client message to someone verbatim, plus the AI email and summary helpers. This is the kind of thing we'd use day to day. Love it, Monika."},
 
-{id:"dheeraj",name:"Dheeraj Singh",email:"dheeraj.avology@gmail.com",project:"WP Guardian AI",
- link:"https://agent-6a38daf00e7ad8--benevolent-creponne-3e3c4d.netlify.app/",extra:[],
- cred:"",tags:["live"],
- summary:"A multi-agent website security & performance scanner. Enter any URL and six AI agents run simultaneously: tech-stack detection (WordPress/Shopify/React/Next), SEO audit, security-header + SSL checks, Core Web Vitals via Google PageSpeed, and malware/pharma-spam/cryptominer/defacement scanning — ending in a clear HACKED / SUSPICIOUS / WARNING / CLEAN verdict with a prioritized action plan. Built with Next.js, Tailwind, Node API routes.",
- claudeUse:"Multi-agent orchestration designed and built with Claude; agents run in parallel and synthesize a single verdict.",
- tokens:"~250k–450k",time:"~14–24 hrs",
- why:"A genuinely useful agency offering (client site security audits) wrapped in a clean parallel multi-agent architecture and deployed live.",
- cs:{complexity:16,claude:18,useful:16,complete:13,innovation:8,presentation:7}},
+{id:"reeya",name:"Reeya Sen",email:"reeya.avology@gmail.com",project:"GHL Agency Intelligence Platform",link:"https://beige-narwhal-409767.hostingersite.com/public/",extra:[["Login","https://beige-narwhal-409767.hostingersite.com/login"]],cred:"admin@agency.com / Password123 (change it)",tags:["live","cred"],ct:90,
+ what:"Full-stack Core PHP + MySQL agency OS over GoHighLevel, with a Claude Haiku intelligence layer.",
+ mk:{complexity:20,claude:25,useful:10,complete:5,innovation:8,presentation:8},
+ note:"Very cool idea... I think it can have very high use if built all the way through to a functional site. But I was looking more for practical applications that can actually be used now in real time. Other than that, great presentation and effort, Reeya!"},
 
-{id:"muskan",name:"Muskan",email:"muskan.avology@gmail.com",project:"Resurrection AI",
- link:"https://github.com/muskanavology-lgtm/Resurrection_AI",extra:[],
- cred:"Documentation: Resurrection AI.docx (attached)",tags:["repo"],
- summary:"A next-generation codebase-intelligence platform on the MERN stack. Upload a project ZIP and it instantly analyzes structure, audits security risks, maps data paths, simulates change impacts, and lets you chat directly with the repository via an integrated AI assistant.",
- claudeUse:"AI-driven repository understanding and chat; full platform documented and built with AI assistance.",
- tokens:"~250k–500k",time:"~15–26 hrs",
- why:"Tackles a hard problem (whole-repo comprehension + impact simulation) that's directly useful for onboarding and audits. Repo + docs only — no hosted demo lowers the completeness score.",
- cs:{complexity:16,claude:18,useful:15,complete:10,innovation:9,presentation:8}},
+{id:"ambika",name:"Ambika Raturi",email:"ambika.avology@gmail.com",project:"Upwork Proposal Compliance Checker",link:"https://6a3be830b8a7e233937350df--resilient-gumption-765a41.netlify.app/",tags:["live","verified"],ct:73,
+ what:"Scans a proposal against Upwork's rules and returns a cleaned, copy-ready version.",
+ mk:{complexity:12,claude:17,useful:17,complete:13,innovation:8,presentation:8},
+ note:"Sharp and focused — paste a proposal, get it scanned against Upwork's rules before it goes out. It works and it protects us on every bid. Exactly the practical mindset I want. Nice job, Ambika."},
 
-{id:"sachin",name:"Sachin Mishra",email:"sachin.avology@gmail.com",project:"SEO Intelligence Agent",
- link:"https://seo-intelligence-agent.netlify.app",extra:[["Backend API","https://seo-intelligence-agent.onrender.com"]],
- cred:"",tags:["live"],
- summary:"An AI-powered SEO research & analysis platform: enter a company name and target keyword and an autonomous AI workflow performs end-to-end SEO research, competitor analysis and content planning, then generates a comprehensive, actionable SEO strategy report. Separate frontend + backend API.",
- claudeUse:"Autonomous agent workflow drives the multi-step research and report generation.",
- tokens:"~200k–400k",time:"~12–20 hrs",
- why:"A self-contained autonomous research agent with a real backend, producing a deliverable the SEO team would actually use.",
- cs:{complexity:15,claude:17,useful:16,complete:13,innovation:7,presentation:7}},
+{id:"tushar",name:"Tushar Tyagi",email:"tushartyagi.avology@gmail.com",project:"FixMyCode (self-healing WP plugin)",link:"https://github.com/tushartyagiavology/fixmycode-wordpress-plugin",cred:"Demo video attached",tags:["repo"],ct:75,
+ what:"WordPress plugin that catches fatal PHP errors and one-click patches them; deep Claude architecture.",
+ mk:{complexity:16,claude:18,useful:13,complete:7,innovation:10,presentation:8},
+ note:"This is the most ambitious idea in the batch — a plugin that catches fatal WordPress crashes and patches them in one click, with really deep Claude work behind it. My only hold-back: it's a repo plus a video, so I couldn't actually run it and use it. Give me a live demo and this jumps way up. Excellent thinking, Tushar."},
 
-{id:"ambika",name:"Ambika Raturi",email:"ambika.avology@gmail.com",project:"Upwork Proposal Compliance Checker",
- link:"https://6a3be830b8a7e233937350df--resilient-gumption-765a41.netlify.app/",extra:[],
- cred:"",tags:["live"],
- summary:"Scans an Upwork proposal before sending and flags anything that breaks Upwork's pre-contract rules (contact info, off-platform/payment nudges, weak/generic phrasing), then returns a cleaned, copy-ready version. Flags are colour-coded (blocked/warning/style) with a reason and suggested rewrite, plus a scan history.",
- claudeUse:"Hybrid design: deterministic rules catch unambiguous violations; the Claude API runs live inside the tool for context-dependent judgment and rewrites (catching paraphrased off-platform asks a keyword filter would miss).",
- tokens:"~120k–250k",time:"~8–15 hrs",
- why:"Sharp, focused real-world ROI — protects Connects and revenue on every proposal, and the rules+LLM hybrid is a thoughtful use of Claude.",
- cs:{complexity:12,claude:17,useful:16,complete:13,innovation:8,presentation:7}},
+{id:"harish",name:"Harish Kumar",email:"harishkumar.avology@gmail.com",project:"DevMate AI",link:"https://6a3d790e978f181b2f46f845--unique-froyo-8ebade.netlify.app/",tags:["live","verified"],ct:61,
+ what:"3-in-1 dev helper — time estimator, AI code review, API-doc generator.",
+ mk:{complexity:12,claude:15,useful:15,complete:13,innovation:7,presentation:8},
+ note:"Clean little 3-in-1 — estimator, code review, API docs — and it works. Genuinely handy for planning a build. Would love to see it go deeper, but a solid, usable tool. Good job, Harish."},
 
-{id:"vikramv",name:"Vikram Kumar Vishwakarma",email:"vikram.avology@gmail.com",project:"Webflow CMS Bulk Editor",
- link:"https://webflow-cms-bulk-editor.vercel.app/",extra:[],
- cred:"User supplies their own Webflow API token",tags:["live"],
- summary:"A SaaS-style dashboard to create, manage and maintain Webflow CMS Collections, Collection Fields and CMS Items directly through the Webflow Data API — without opening the Webflow Designer. Spreadsheet-style item view, 20+ field types, CSV bulk import/export, bulk create/update/delete/publish and real-time sync to the connected Webflow site.",
- claudeUse:"Built with Claude; integrates against the live Webflow Data API.",
- tokens:"~200k–400k",time:"~12–22 hrs",
- why:"Real, deployed productivity tool against a live third-party API; bulk operations are a genuine time-saver for the web team.",
- cs:{complexity:15,claude:14,useful:16,complete:14,innovation:7,presentation:6}},
+{id:"megha",name:"Megha",email:"megha.avology@gmail.com",project:"WordPress Developer Assistant",link:"https://wp-dev-assistant.netlify.app/",tags:["live","verified"],ct:62,
+ what:"WP toolkit — ACF/WP_Query/CPT generators, snippet library, task manager, PageSpeed inspector.",
+ mk:{complexity:12,claude:13,useful:15,complete:14,innovation:6,presentation:8},
+ note:"A tidy WordPress toolkit — ACF, WP_Query, snippets, PageSpeed — all working in one place. Practical for the WP team day to day. Nice work, Megha."},
 
-{id:"abhishek",name:"Abhishek Anand",email:"abhishekanand.avology@gmail.com",project:"BuddyFlow HR (Employee Mgmt System)",
- link:"https://buddyflow-hr.netlify.app/",extra:[],
- cred:"abhishekanand.avology@gmail.com  /  Abhishek@123",tags:["live","cred"],
- summary:"A modern HR Employee Management System: employee CRUD, attendance mark-in/out, attendance records, a leave system (12 yearly leaves, +1/month, apply/approve/reject), salary generation, real-time group chat, AI chat assistant, notifications and dashboard analytics. Role-based login (HR & Employee). Stack: React/Vite/shadcn, Node/Express, Supabase (Postgres + Auth), JWT.",
- claudeUse:"Full app generated with AI: frontend, backend APIs, Supabase schema, folder structure and deployment steps.",
- tokens:"~300k–550k",time:"~18–28 hrs",
- why:"A complete internal HR product, deployed with a working role-based login — broad and immediately operational.",
- cs:{complexity:15,claude:14,useful:16,complete:14,innovation:6,presentation:7}},
+{id:"suraj",name:"Suraj Kumar",email:"surajk.avology@gmail.com",project:"Website Asset Extractor AI",link:"https://website-asset-extractor.vercel.app/",tags:["live","verified"],ct:57,
+ what:"Paste a URL; pulls images, video, fonts, CSS/JS, colors, tech stack, screenshots to a ZIP.",
+ mk:{complexity:12,claude:13,useful:14,complete:14,innovation:6,presentation:8},
+ note:"Does exactly what it says — pulled a site's images, fonts, CSS, colors and tech stack, no signup needed. Clean, fast and useful during audits and migrations. Well done, Suraj."},
 
-{id:"komal",name:"Komal Bhardwaj",email:"komalbhardwaj.avology@gmail.com",project:"SEO All-in-One Toolkit",
- link:"https://seo-all-in-one-toolkit.netlify.app/",extra:[],
- cred:"komalbhardwaj.avology@gmail.com  /  komalbhardwaj@1234",tags:["live","cred"],
- summary:"A complete SEO 'command center' dashboard: analyze websites, optimize content, generate metadata, create schema markup, monitor technical SEO factors, run audits and manage SEO workflows — consolidating many separate SEO apps into one platform.",
- claudeUse:"Built with Claude (prompt.txt attached); AI assists the content/metadata/schema generation.",
- tokens:"~180k–350k",time:"~10–18 hrs",
- why:"A broad, deployed SEO suite with a real login that maps onto a core agency service line.",
- cs:{complexity:13,claude:14,useful:15,complete:14,innovation:6,presentation:7}},
+{id:"swati",name:"Swati Mishra",email:"swatimishra.avology@gmail.com",project:"Shopify Schema Architect",link:"https://schema-architect-tool.netlify.app/",tags:["live","verified"],ct:65,
+ what:"Build a section and it generates the Shopify {% schema %} + Liquid live; .liquid export.",
+ mk:{complexity:13,claude:13,useful:14,complete:13,innovation:6,presentation:8},
+ note:"Works nicely — build a section and it generates the schema and Liquid live. A lighter take on what Shahnawaz did, but genuinely useful for theme work. Good job, Swati."},
 
-{id:"deepak",name:"Deepak Sharma",email:"deepaksharma.avology@gmail.com",project:"SkillCraft — Autonomous Backend API & Test Scaffolder",
- link:"https://www.loom.com/share/b60ba602efc94654846cc4a79e9ca3e7",extra:[],
- cred:"files.zip (60.7 KB) + Loom demo video",tags:[],
- summary:"A developer-productivity tool that shifts the engineer from writing repetitive code to acting as an AI orchestrator: input a high-level feature requirement and SkillCraft runs the entire backend-API generation and quality-assurance cycle on its own. Delivered as a Loom demo video + a code zip (no hosted app or repo link).",
- claudeUse:"AI runs the autonomous generation + QA loop from a single high-level requirement.",
- tokens:"~150k–300k",time:"~10–18 hrs",
- why:"Ambitious autonomous-generation concept (akin to AI Feature Forge, for backend + tests). Held back on completeness — video + zip only, nothing hosted or in a repo to open.",
- cs:{complexity:14,claude:15,useful:15,complete:9,innovation:8,presentation:8}},
+{id:"rakesh",name:"Rakesh Kumar",email:"rakeshkumar.avology@gmail.com",project:"Professional SEO Audit Tool",link:"https://flourishing-alfajores-a37a04.netlify.app/",tags:["live","verified"],ct:60,
+ what:"Client-side SEO auditor; honest about CORS limits instead of faking data.",
+ mk:{complexity:12,claude:12,useful:14,complete:14,innovation:6,presentation:8},
+ note:"Clean client-side SEO auditor, and I like that it's honest about CORS limits instead of faking data. It works — just a crowded lane with a few other SEO tools here. Solid, Rakesh."},
 
-{id:"anu",name:"Anu Deol",email:"anu.avology@gmail.com",project:"SQL CRUD Generator",
- link:"https://github.com/anu-avology26/sql-crud-generator-module",extra:[],
- cred:"Google Docs technical documentation provided",tags:["repo"],
- summary:"A reusable Laravel package (Laravel 10/11/12) that generates full CRUD admin panels + a REST API from one SQL schema — running entirely in PHP, locally, with zero external API calls, no AI tokens and no cloud dependency (the schema never leaves the server). Smart FK dropdowns, auto-validation, 5 ready admin themes (Library, Ecommerce, CRM, Healthcare, SaaS), built-in auth (login, password reset, profile, SMTP).",
- claudeUse:"Claude used to architect and build the package; the runtime itself is deliberately AI-free / self-hosted.",
- tokens:"~150k–300k",time:"~12–22 hrs",
- why:"Strong engineering discipline — a privacy-preserving, self-hosted developer package. Repo-only delivery caps the completeness score.",
- cs:{complexity:15,claude:13,useful:15,complete:11,innovation:7,presentation:7}},
+{id:"ricky",name:"Ricky Gupta",email:"rickygupta95@gmail.com",project:"EIN Industry Wire (WP plugin)",link:"https://wordpress-1180784-6520892.cloudwaysapps.com/",cred:"devavology12@gmail.com / J72FUYeByd",tags:["live","cred","verified"],ct:66,
+ what:"WordPress plugin — RSS aggregation, AI headlines/summaries, editorial queue, stock ticker.",
+ mk:{complexity:13,claude:13,useful:13,complete:13,innovation:6,presentation:7},
+ note:"The front end is actually live — AI-summarized news and a stock ticker rendering on a real WordPress site. Niche, but it works and shows a real editorial pipeline. Nice job, Ricky."},
 
-{id:"ricky",name:"Ricky Gupta",email:"rickygupta95@gmail.com",project:"EIN Industry Wire (WordPress plugin)",
- link:"https://wordpress-1180784-6520892.cloudwaysapps.com/",extra:[],
- cred:"devavology12@gmail.com  /  J72FUYeByd",tags:["live","cred"],
- summary:"A WordPress plugin deployed on a Cloudways-hosted site: RSS news aggregation, AI-generated headlines and summaries, an editorial review queue, a frontend news feed, and stock-ticker integration — an automated newsroom / PR-wire.",
- claudeUse:"AI generates the headlines and summaries in the editorial pipeline; built with AI assistance.",
- tokens:"~180k–350k",time:"~12–20 hrs",
- why:"A deployed, login-gated WordPress product with a real editorial workflow and AI summarization — directly relevant to content/PR services.",
- cs:{complexity:13,claude:13,useful:14,complete:13,innovation:6,presentation:7}},
+{id:"vikramv",name:"Vikram Kumar Vishwakarma",email:"vikram.avology@gmail.com",project:"Webflow CMS Bulk Editor",link:"https://webflow-cms-bulk-editor.vercel.app/",cred:"needs your own Webflow API token",tags:["live","verified"],ct:72,
+ what:"Dashboard over the Webflow Data API — bulk CSV create/update/delete/publish, real-time sync.",
+ mk:{complexity:14,claude:13,useful:14,complete:10,innovation:7,presentation:7},
+ note:"A real tool against the live Webflow API with bulk CSV operations — that's genuinely useful. Only catch: it needs my own Webflow token to do anything, so I couldn't fully drive it. Strong idea, Vikram."},
 
-{id:"gautam",name:"Gautam Dhiman",email:"gautamd.avology@gmail.com",project:"Web2Figma (Website → Figma Importer)",
- link:"https://w2f.vercel.app/",extra:[],
- cred:"Login required (no credentials provided); manifest.json attached",tags:["live"],
- summary:"A web platform + Figma plugin that recreates the structure of any website inside Figma. Log in, paste a website URL; once processed, a 'Copy to Figma' token (or exported JSON) is imported by the companion 'Website to Figma Importer' plugin to auto-generate the website structure on the Figma canvas, ready to restyle.",
- claudeUse:"Built with Claude; bridges a web scraper/processor to a custom Figma plugin.",
- tokens:"~180k–350k",time:"~12–20 hrs",
- why:"Clever two-part architecture (web app + native Figma plugin) solving a real design-handoff pain. Needs working test credentials to fully verify.",
- cs:{complexity:13,claude:14,useful:14,complete:12,innovation:8,presentation:6}},
+{id:"rohit",name:"Rohit Kumar",email:"rohitkumar.avology@gmail.com",project:"Site Optimizer",link:"https://allinone-site-optimizer.netlify.app/",tags:["live","verified"],ct:60,
+ what:"Paste a URL, pick site type; audit with scores and a ranked fix roadmap.",
+ mk:{complexity:11,claude:12,useful:14,complete:13,innovation:6,presentation:8},
+ note:"Works — paste a URL, pick the site type, get an audit and a fix roadmap. Clean, but it's one of several SEO/audit tools here, so it needs a sharper edge to stand out. Nice effort, Rohit."},
 
-{id:"sandeep",name:"Sandeep Kumar",email:"sandeep1avology@gmail.com",project:"liquid-ai (image → responsive section)",
- link:"https://liquidai-conp.onrender.com/",extra:[],
- cred:"",tags:["live"],
- summary:"An image-to-code tool: upload a screenshot or design image and liquid-ai generates the corresponding web section with both a desktop layout and a fully responsive mobile layout. Deployed on Render.",
- claudeUse:"AI vision-to-code turns a design image into responsive section markup.",
- tokens:"~120k–220k",time:"~8–14 hrs",
- why:"A practical design-to-code accelerator, deployed and clickable. Similar territory to Web2Figma but simpler and single-purpose.",
- cs:{complexity:12,claude:13,useful:13,complete:12,innovation:7,presentation:6}},
+{id:"gautam",name:"Gautam Dhiman",email:"gautamd.avology@gmail.com",project:"Web2Figma",link:"https://w2f.vercel.app/",cred:"core is behind a signup (no login provided)",tags:["live"],ct:67,
+ what:"DOM-accurate website → editable Figma layers with Auto Layout and components.",
+ mk:{complexity:13,claude:14,useful:13,complete:9,innovation:8,presentation:7},
+ note:"Love the concept — DOM-accurate website-to-Figma layers, and the landing sells it well. But the actual converter is behind a signup I couldn't get past, so I couldn't test the real magic. Get me a way in and I'll re-look. Great idea, Gautam."},
 
-{id:"lakhvir",name:"Lakhvir Singh",email:"lakhvir.avology@gmail.com",project:"Website Validator",
- link:"https://website-validator-peach.vercel.app/",extra:[["GitHub","https://github.com/Lakhvirsingh0/website-validator"]],
- cred:"webvalidator-prompt.md (12.1 KB) attached",tags:["live","repo"],
- summary:"A deployed 'Website Validator' web app (preview on Vercel, code on GitHub) that checks/validates websites; the build prompt is attached as a markdown file. The email itself is link-only, so exact feature scope would come from the app/prompt.",
- claudeUse:"Built with Claude from an attached prompt (webvalidator-prompt.md).",
- tokens:"~120k–220k",time:"~8–14 hrs",
- why:"Deployed and open-source with a clean handoff (live link + repo + prompt). Light on described detail in the email.",
- cs:{complexity:12,claude:12,useful:13,complete:13,innovation:6,presentation:7}},
+{id:"deepak",name:"Deepak Sharma",email:"deepaksharma.avology@gmail.com",project:"SkillCraft — Autonomous Backend & Test Scaffolder",link:"https://www.loom.com/share/b60ba602efc94654846cc4a79e9ca3e7",cred:"files.zip + Loom video only",tags:[],ct:69,
+ what:"Give a feature requirement; it auto-generates the backend API + tests (engineer as orchestrator).",
+ mk:{complexity:13,claude:15,useful:13,complete:8,innovation:8,presentation:7},
+ note:"Ambitious — autonomous backend and test scaffolding. Problem is you only sent a video and a zip, so there was nothing live for me to actually try. Host it and I can really judge it. Good concept, Deepak."},
 
-{id:"swati",name:"Swati Mishra",email:"swatimishra.avology@gmail.com",project:"Shopify Schema Architect",
- link:"https://schema-architect-tool.netlify.app/",extra:[],
- cred:"",tags:["live"],
- summary:"A web tool that generates Shopify {% schema %} blocks and matching Liquid code for custom sections without hand-writing JSON/Liquid. Section setup, field builder (20+ Shopify field types), three synced live outputs (full schema block, settings array, Liquid snippets), a simulated theme-customizer preview, field management, and .liquid import/export.",
- claudeUse:"Built with Claude; generates valid Shopify schema/Liquid on the fly.",
- tokens:"~150k–280k",time:"~10–16 hrs",
- why:"Focused, deployed developer tool that removes real boilerplate for Shopify theme work (complements SchemaFlow as a lighter, client-side option).",
- cs:{complexity:13,claude:12,useful:14,complete:13,innovation:6,presentation:7}},
+{id:"anu",name:"Anu Deol",email:"anu.avology@gmail.com",project:"SQL CRUD Generator",link:"https://github.com/anu-avology26/sql-crud-generator-module",tags:["repo"],ct:68,
+ what:"Self-hosted Laravel package that generates CRUD admin + REST from one SQL schema, no cloud.",
+ mk:{complexity:14,claude:12,useful:14,complete:10,innovation:7,presentation:7},
+ note:"Solid engineering — a self-hosted Laravel package that generates CRUD and a REST API with no cloud dependency. Privacy-first is smart. It's repo-only though, so I couldn't just click and use it. Nice work, Anu."},
 
-{id:"sachinkumar",name:"Sachin Kumar",email:"sachinkumar.avology@gmail.com",project:"APIForge — API Testing Platform",
- link:"https://github.com/sachin-kumar001/api-tester",extra:[],
- cred:"",tags:["repo"],
- summary:"A web-based API testing platform (Postman-style): test REST APIs across GET/POST/PUT/DELETE/PATCH, analyze errors with plain-language explanations, auto-generate API documentation, and produce ready-to-use code snippets in multiple languages (JavaScript, Python, PHP, Java, C#), with a modern real-time request/response dashboard.",
- claudeUse:"AI powers the error explanations, documentation and multi-language snippet generation; built with AI assistance. Repo only.",
- tokens:"~150k–280k",time:"~10–18 hrs",
- why:"A useful all-in-one API dev tool. Repo-only delivery (no hosted demo) caps completeness.",
- cs:{complexity:13,claude:12,useful:14,complete:10,innovation:6,presentation:7}},
+{id:"rituraj",name:"Rituraj Mishra",email:"riturajmishra.avology@gmail.com",project:"AI Feature Forge",link:"https://github.com/rishabhmis93ar/ai-feature-forge",tags:["repo"],ct:85,
+ what:"8-agent Claude workflow that generates full-stack CRUD modules (React + Express).",
+ mk:{complexity:20,claude:10,useful:15,complete:5,innovation:10,presentation:3},
+ note:"I think the idea is great idea. Unfortunately, I couldn't view any of it, so I went to the link that you provided. I clicked on the additional links that were there, and I couldn't see anything functional as far as UI/UX. Nothing worked, but overall great idea, Rituraj."},
 
-{id:"megha",name:"Megha",email:"megha.avology@gmail.com",project:"WordPress Developer Assistant Dashboard",
- link:"https://wp-dev-assistant.netlify.app/",extra:[],
- cred:"",tags:["live"],
- summary:"A dashboard bringing common WordPress dev tools into one place: ACF Generator (ready PHP), WP_Query Builder, Custom Post Type generator, a Snippet Library, a Task Manager, and a URL Inspector that hits the Google PageSpeed API (with the user's key) to report performance/SEO/accessibility/best-practices/Core Web Vitals with improvement suggestions. Data persists in localStorage.",
- claudeUse:"Built with Claude; generates WP code (ACF/WP_Query/CPT) and wires the PageSpeed API.",
- tokens:"~120k–250k",time:"~8–15 hrs",
- why:"Practical daily-driver for the WordPress team, deployed and combining generators with a live performance inspector.",
- cs:{complexity:12,claude:12,useful:14,complete:13,innovation:5,presentation:6}},
+{id:"lakhvir",name:"Lakhvir Singh",email:"lakhvir.avology@gmail.com",project:"Website Validator",link:"https://website-validator-peach.vercel.app/",extra:[["GitHub","https://github.com/Lakhvirsingh0/website-validator"]],tags:["live","repo","verified"],ct:63,
+ what:"Scans HTML/SEO/accessibility/performance with an AI auto-fix angle (Groq).",
+ mk:{complexity:12,claude:13,useful:13,complete:12,innovation:6,presentation:7},
+ note:"Works — HTML, SEO and accessibility checks with an AI auto-fix angle. Decent, but it's another site-checker in a crowded field here. Good job, Lakhvir."},
 
-{id:"harish",name:"Harish Kumar",email:"harishkumar.avology@gmail.com",project:"DevMate AI",
- link:"https://6a3d790e978f181b2f46f845--unique-froyo-8ebade.netlify.app/",extra:[],
- cred:"",tags:["live"],
- summary:"A 3-in-1 developer tool: a Time Estimator (paste a requirement → full task breakdown with hours, libraries and risks in ~10s), an AI Code Review (bugs, missing error handling, quality score with fixes), and an API documentation generator for endpoints.",
- claudeUse:"AI generates the estimates, code review and docs from plain-English input.",
- tokens:"~120k–220k",time:"~8–14 hrs",
- why:"Targets three concrete daily developer pains in one deployed app; estimation + review is a nice planning aid.",
- cs:{complexity:12,claude:13,useful:13,complete:12,innovation:5,presentation:6}},
+{id:"muskan",name:"Muskan",email:"muskan.avology@gmail.com",project:"Resurrection AI",link:"https://github.com/muskanavology-lgtm/Resurrection_AI",cred:"docx attached",tags:["repo"],ct:76,
+ what:"MERN codebase-intelligence — upload a repo, analyze structure/risks, chat with the code.",
+ mk:{complexity:13,claude:15,useful:12,complete:7,innovation:8,presentation:7},
+ note:"Ambitious idea — upload a repo and chat with it, map risks and impacts. But it's a repo with docs, nothing hosted, so I couldn't actually run it. Get it live and it'll show much better. Great concept, Muskan."},
 
-{id:"rohit",name:"Rohit Kumar",email:"rohitkumar.avology@gmail.com",project:"Site Optimizer",
- link:"https://allinone-site-optimizer.netlify.app/",extra:[],
- cred:"site-optimizer-prompt.txt (attached)",tags:["live"],
- summary:"An automated website audit tool that analyzes a site in minutes and scores performance, SEO, technical health and conversions (0–100 each), prioritizes fixes by business impact and gives actionable recommendations with estimated ROI. Aimed at eCommerce/WordPress/SaaS sites.",
- claudeUse:"Built with Claude; AI produces the scored audit and ROI-ranked recommendations.",
- tokens:"~100k–200k",time:"~7–12 hrs",
- why:"A clean, deployed audit tool with a business-impact/ROI framing that's easy to put in front of clients.",
- cs:{complexity:11,claude:12,useful:13,complete:13,innovation:5,presentation:6}},
+{id:"dharmendra",name:"Dharmendra Kumar",email:"dharmendraavology@gmail.com",project:"AI Documentation Generator",link:"https://github.com/Dharamavology/AI-Documentation-Generator",cred:"GitHub token shared privately (redacted — rotate it)",tags:["repo"],ct:64,
+ what:"Turns raw dev notes into docs; multi-provider AI; export PDF/DOCX/MD.",
+ mk:{complexity:12,claude:13,useful:13,complete:9,innovation:6,presentation:7},
+ note:"Nice idea — notes into polished docs, multi-provider AI, good documentation. Repo-only though, so I couldn't try it live. Host a demo next time. Good work, Dharmendra."},
 
-{id:"rakesh",name:"Rakesh Kumar",email:"rakeshkumar.avology@gmail.com",project:"Professional SEO Audit Tool",
- link:"https://flourishing-alfajores-a37a04.netlify.app/",extra:[],
- cred:"",tags:["live"],
- summary:"A lightweight, fully client-side SEO website audit tool (single index.html, HTML/CSS/vanilla JS, no backend or external APIs). Enter a URL and it checks title tags, meta descriptions, headings, images, links, structured data and content metrics, marking CORS-blocked items as 'Browser Restricted'. SaaS-style dashboard with SEO scores, filtering, exportable JSON/HTML reports, localStorage history and light/dark mode.",
- claudeUse:"Built with Claude from a detailed single-file prompt; all analysis runs in-browser (no AI at runtime).",
- tokens:"~80k–160k",time:"~6–12 hrs",
- why:"A clean, honest (no fake data) client-side SEO auditor, deployed as a single file. Overlaps with several other SEO entries.",
- cs:{complexity:11,claude:11,useful:13,complete:13,innovation:5,presentation:7}},
+{id:"sachinkumar",name:"Sachin Kumar",email:"sachinkumar.avology@gmail.com",project:"APIForge — API Testing Platform",link:"https://github.com/sachin-kumar001/api-tester",tags:["repo"],ct:62,
+ what:"Postman-style REST tester with AI error help and multi-language snippet generation.",
+ mk:{complexity:12,claude:12,useful:13,complete:9,innovation:6,presentation:7},
+ note:"A Postman-style tester with AI error help and multi-language snippets — useful. It's a repo with no live demo, so I couldn't actually run it. Ship it live and I'll take another look. Nice, Sachin."},
 
-{id:"suraj",name:"Suraj Kumar",email:"surajk.avology@gmail.com",project:"Website Asset Extractor AI",
- link:"https://website-asset-extractor.vercel.app/",extra:[],
- cred:"PDF documentation + demo video attached",tags:["live"],
- summary:"A web app that analyzes any publicly accessible website and extracts its assets — images, videos, fonts, CSS files, JS files and other external resources — with preview and organized download, to speed up website analysis for developers, designers and marketers.",
- claudeUse:"Built with Claude; automates the asset-discovery workflow.",
- tokens:"~80k–160k",time:"~5–10 hrs",
- why:"A handy, well-documented single-purpose utility (deployed, with PDF + video) that saves real grunt-work during site audits/migrations.",
- cs:{complexity:11,claude:10,useful:12,complete:13,innovation:5,presentation:6}},
+{id:"sandeep",name:"Sandeep Kumar",email:"sandeep1avology@gmail.com",project:"liquid-ai (image → responsive section)",link:"https://liquidai-conp.onrender.com/",cred:"login wall, no credentials provided",tags:["live"],ct:63,
+ what:"Upload a screenshot/design; generates the section as responsive desktop + mobile code.",
+ mk:{complexity:12,claude:13,useful:12,complete:8,innovation:7,presentation:6},
+ note:"Promising — screenshot to responsive section. But it dropped me on a login with no way in, so I couldn't test the core feature. Give me access and I'll re-judge. Good idea, Sandeep."},
 
-{id:"dharmendra",name:"Dharmendra Kumar",email:"dharmendraavology@gmail.com",project:"AI Documentation Generator",
- link:"https://github.com/Dharamavology/AI-Documentation-Generator",extra:[["Claude chat","https://claude.ai/chat/14ab823c-f7e0-422d-8cf7-a36af7fca0de"]],
- cred:"GitHub access token shared privately (redacted — rotate it); 3 PDF docs attached",tags:["repo"],
- summary:"A web platform that converts raw developer notes into professional documentation using AI: project management, note categorization, AI document generation, version control, export to PDF/DOCX/HTML/Markdown, activity logs and settings — with support for multiple AI providers (Gemini, OpenAI, Claude).",
- claudeUse:"Claude is one of the pluggable AI providers; the build was driven via Claude (chat link shared).",
- tokens:"~150k–300k",time:"~10–18 hrs",
- why:"Solid, multi-provider documentation tool with thorough docs. Repo-only delivery (no hosted demo) caps completeness.",
- cs:{complexity:13,claude:14,useful:14,complete:10,innovation:6,presentation:7}},
+{id:"ashish",name:"Ashish Yadav",email:"ashishyadav.avology@gmail.com",project:"Basecamp Flow (PM SaaS)",link:"https://basecamp-flow.netlify.app",cred:"sign-in throws a Supabase connection error",tags:["live","broken"],ct:79,
+ what:"Basecamp-style PM SaaS — Kanban, chat, RBAC, AI assistant (front end only working).",
+ mk:{complexity:14,claude:12,useful:8,complete:4,innovation:7,presentation:8},
+ note:"Beautiful UI and a big vision — but when I tried to sign in it threw a Supabase connection error, so I couldn't get into the actual product at all. The shell is gorgeous; the app underneath isn't wired up yet. Get the backend live and this changes a lot. Great design, Ashish."},
 
-{id:"monika",name:"Monika Bisht",email:"monikaavology@gmail.com",project:"Avology PM Copilot",
- link:"https://avology-pm-copilot.netlify.app",extra:[],
- cred:"",tags:["live"],
- summary:"A browser-based project-management copilot with 5 features: Assign to Team (turns a client message into an assignment email, unedited), Assignments Log (status/due/overdue tracking), AI Client-Update Email (rough notes → polished client email), AI Thread Summariser (long Slack/WhatsApp/email thread → decisions/action items/questions) and Team & Capacity (who's free/busy across Dev/Design/SEO/QA).",
- claudeUse:"AI powers the client-email writer and thread summariser; whole tool built with Claude.",
- tokens:"~120k–220k",time:"~8–14 hrs",
- why:"Lightweight internal coordination tool that removes real WhatsApp/email overhead; the AI summariser is the standout feature.",
- cs:{complexity:12,claude:14,useful:15,complete:13,innovation:6,presentation:7}},
+{id:"vikrambdm",name:"Vikram (BDM)",email:"vikrambdm.avology@gmail.com",project:"CRM — Lead/Bid Tracker",link:"https://claude.ai/public/artifacts/18d09a26-2ec0-4bd3-9487-f452d2460f85",tags:["live"],ct:55,
+ what:"Single-file CRM for Upwork bids — Kanban, follow-up alerts, dashboard (browser storage).",
+ mk:{complexity:9,claude:11,useful:13,complete:11,innovation:5,presentation:7},
+ note:"Practical little CRM for tracking bids and follow-ups, and it actually runs. It's a single-file artifact with no real backend, so it's more of a personal tool than a product — but I appreciate the usefulness. Good job, Vikram."},
 
-{id:"monikasharma",name:"Monika Sharma",email:"monikasharma.avology@gmail.com",project:"Laravel Bug Fix Assistant",
- link:"https://github.com/Monika678/laravel-bug-fix-assistant",extra:[],
- cred:"",tags:["repo"],
- summary:"An AI web app where developers paste any Laravel exception/error and get an AI explanation — root cause, why it occurred, how to fix it, and suggested corrected code. Built on Laravel 13 + Groq AI API (Llama 3.3 70B), PHP 8.3, Blade, Bootstrap. Repo only, no hosted demo.",
- claudeUse:"Runtime AI is Groq/Llama (built for the contest); the app was assembled with AI assistance.",
- tokens:"~120k–220k",time:"~8–14 hrs",
- why:"A focused developer aid for Laravel error triage. Repo-only delivery and Groq (not Claude) as the runtime model cap the score.",
- cs:{complexity:12,claude:11,useful:13,complete:10,innovation:5,presentation:7}},
+{id:"monikasharma",name:"Monika Sharma",email:"monikasharma.avology@gmail.com",project:"Laravel Bug Fix Assistant",link:"https://github.com/Monika678/laravel-bug-fix-assistant",tags:["repo"],ct:58,
+ what:"Paste a Laravel error → AI root cause + fix + corrected code (Laravel 13 + Groq).",
+ mk:{complexity:11,claude:10,useful:12,complete:9,innovation:5,presentation:7},
+ note:"Handy for Laravel error triage. It's repo-only and runs on Groq rather than Claude, so a little outside the spirit, and I couldn't just use it. Nice effort though, Monika."},
 
-{id:"vikrambdm",name:"Vikram (BDM)",email:"vikrambdm.avology@gmail.com",project:"CRM — Lead/Bid Tracker",
- link:"https://claude.ai/public/artifacts/18d09a26-2ec0-4bd3-9487-f452d2460f85",extra:[],
- cred:"",tags:["live"],
- summary:"A free, single-file CRM for a Business Development Manager bidding on Upwork/portals: stores leads (client, project type, portal, bid value, status, follow-up date), alerts on overdue/due follow-ups, tracks 5 stages (New → Bid sent → Follow-up → Won → Lost), and shows a Kanban board, follow-up calendar and live dashboard stats. Pure HTML/CSS/JS, works offline, data saved in-browser.",
- claudeUse:"Built entirely with Claude and published as a Claude.ai artifact; the email also sketches the backend it would need to become a full SaaS.",
- tokens:"~30k–80k",time:"~2–5 hrs",
- why:"Pragmatic, zero-cost tool for the BD function that runs instantly — though it's a single-file artifact with no backend/persistence beyond the browser.",
- cs:{complexity:9,claude:11,useful:13,complete:11,innovation:5,presentation:6}},
+{id:"rahul",name:"Rahul Kumar",email:"rahulkumar.avology@gmail.com",project:"UX Animation Playground",link:"https://rahul-frontend.github.io/claude-project/",extra:[["GitHub","https://github.com/Rahul-Frontend/claude-project"]],tags:["live","repo","verified"],ct:51,
+ what:"Single-page playground for button micro-interactions with copy-the-CSS.",
+ mk:{complexity:9,claude:10,useful:9,complete:12,innovation:6,presentation:6},
+ note:"Polished little playground for button animations — it works and looks clean. Just very small in scope; it's a widget more than a tool. Nice craft, Rahul."},
 
-{id:"praveen",name:"Praveen Kumar",email:"praveen.avology@gmail.com",project:"AI Form Builder",
- link:"https://frontenddev344.github.io/ai_form_builder/",extra:[["GitHub","https://github.com/frontenddev344/ai_form_builder"]],
- cred:"Build prompt file attached",tags:["live","repo"],
- summary:"A web-based form builder (deployed on GitHub Pages) for creating forms, with the build prompt shared as an attachment.",
- claudeUse:"Built with Claude from a single build prompt.",
- tokens:"~40k–100k",time:"~3–6 hrs",
- why:"A clean, deployed front-end utility; lighter in scope than the full-stack entries and lacking a detailed feature write-up.",
- cs:{complexity:10,claude:10,useful:11,complete:12,innovation:5,presentation:5}},
+{id:"praveen",name:"Praveen Kumar",email:"praveen.avology@gmail.com",project:"AI Form Builder",link:"https://frontenddev344.github.io/ai_form_builder/",extra:[["GitHub","https://github.com/frontenddev344/ai_form_builder"]],tags:["live","repo"],ct:53,
+ what:"Deployed web form builder (light on detail in the write-up).",
+ mk:{complexity:9,claude:9,useful:10,complete:11,innovation:5,presentation:6},
+ note:"A working form builder, deployed. It's on the lighter side and the write-up was thin, so I couldn't tell what's really under the hood. Keep building, Praveen."},
 
-{id:"nancy",name:"Nancy Arora",email:"nancy.avology@gmail.com",project:"Pixel Compare Pro",
- link:"https://pixel-compare-pro-1.onrender.com/results?id=f2497a93-d2c0-48ec-a3dd-bd24f8d799b8",extra:[],
- cred:"",tags:["live"],
- summary:"'Pixel Compare Pro' — an image/pixel comparison tool (the submission is brief: a results link plus the product name). Deployed on Render.",
- claudeUse:"Built with Claude (minimal detail provided in the email).",
- tokens:"~40k–100k",time:"~3–6 hrs",
- why:"Deployed and functional, but the submission gives little detail on features or how Claude was used — needs a live look to score fairly.",
- cs:{complexity:9,claude:9,useful:11,complete:12,innovation:5,presentation:5}},
+{id:"surajtester",name:"Suraj Tester",email:"surajavology@gmail.com",project:"AI-Powered Bug Report Generator",link:"mailto:surajavology@gmail.com",cred:"API key + sample sheet only (no app)",tags:[],ct:61,
+ what:"QA tool concept — turns messy inputs into structured bug reports via Claude.",
+ mk:{complexity:9,claude:12,useful:11,complete:5,innovation:6,presentation:6},
+ note:"Good real-world target — bug reports from messy inputs. But you only sent an overview, an API key and a sample sheet — there was no app for me to actually try. Build and host it and I'll judge it properly. Thanks, Suraj."},
 
-{id:"rahul",name:"Rahul Kumar",email:"rahulkumar.avology@gmail.com",project:"UX Animation Playground",
- link:"https://rahul-frontend.github.io/claude-project/",extra:[["GitHub","https://github.com/Rahul-Frontend/claude-project"]],
- cred:"",tags:["live","repo"],
- summary:"A single-page 'mini design tool' for UI/UX designers to experiment with button micro-interactions (hover glow, scale, ripple, bounce, loading spinner), switch animation types, see a live preview and copy the CSS. Vanilla HTML/CSS/JS, no backend, no frameworks.",
- claudeUse:"Built with Claude to a tight spec (vanilla JS only, optional Font Awesome).",
- tokens:"~30k–70k",time:"~2–5 hrs",
- why:"Polished and on-spec, but deliberately small in scope (front-end micro-interactions) with no backend or AI runtime.",
- cs:{complexity:9,claude:10,useful:9,complete:12,innovation:6,presentation:5}},
+{id:"nancy",name:"Nancy Arora",email:"nancy.avology@gmail.com",project:"Pixel Compare Pro",link:"https://pixel-compare-pro-1.onrender.com/results?id=f2497a93-d2c0-48ec-a3dd-bd24f8d799b8",tags:["live"],ct:51,
+ what:"Image/pixel comparison tool (submission was link-only, minimal detail).",
+ mk:{complexity:9,claude:9,useful:10,complete:10,innovation:5,presentation:6},
+ note:"It's deployed, but the submission was just a link with almost no detail, and I couldn't tell what it really does or how Claude was used. Show me more next time. Thanks, Nancy."},
 
-{id:"anoop",name:"Anoop Singh",email:"anoopavology@gmail.com",project:"AI-Assisted Website Dev Workflow",
- link:"https://wordpress-1180784-6490144.cloudwaysapps.com/",extra:[],
- cred:"",tags:["live"],
- summary:"More a workflow/proof-of-concept than a product: a process for using Claude to generate Elementor theme files from approved design requirements and install them into builders (Elementor/WordPress/Shopify) so only minor refinements remain. Ships a small sample Elementor site as proof of concept.",
- claudeUse:"Claude generates theme/layout files; the submission proposes scaling the workflow across CMS platforms.",
- tokens:"~20k–60k",time:"~2–4 hrs",
- why:"A reasonable efficiency idea, but it's a workflow + sample site rather than a built application — the lightest built submission in the field.",
- cs:{complexity:8,claude:9,useful:10,complete:8,innovation:5,presentation:5}},
+{id:"anoop",name:"Anoop Singh",email:"anoopavology@gmail.com",project:"AI-Assisted Website Dev Workflow",link:"https://wordpress-1180784-6490144.cloudwaysapps.com/",tags:["live"],ct:45,
+ what:"A workflow write-up (Claude-generated Elementor themes) plus a small sample site.",
+ mk:{complexity:8,claude:9,useful:10,complete:8,innovation:5,presentation:6},
+ note:"More of a workflow write-up with a sample site than a built tool. The idea (Claude-generated Elementor themes) is reasonable, but there wasn't a real app to use. Turn it into something live. Appreciate it, Anoop."},
 
-{id:"surajtester",name:"Suraj Tester",email:"surajavology@gmail.com",project:"AI-Powered Bug Report Generator",
- link:"mailto:surajavology@gmail.com",extra:[],
- cred:"Anthropic API key + sample bug sheet (Loren AI bug sheet.xlsx) provided in the email — key withheld here; rotate it",tags:[],
- summary:"A QA productivity tool that uses Claude AI to automatically generate professional, structured bug reports from multiple input sources — bug descriptions, bug sheets, spreadsheets, text files and screenshots. It analyzes context, writes bug titles/summaries, suggests severity & priority, produces expected-vs-actual results and steps to reproduce, and handles individual bugs or bulk bug-sheet uploads. NOTE: the submission is a written overview plus an Anthropic API key and a sample bug sheet — no hosted demo or repository link was included.",
- claudeUse:"Claude is the core reasoning engine — understanding bug descriptions and testing context, interpreting uploaded sheets/screenshots, and producing standardized bug documentation. Integrated via the Anthropic API (submitter supplied a key).",
- tokens:"~80k–180k",time:"~6–12 hrs",
- why:"Targets a real, repetitive QA pain (bug documentation) with bulk-sheet processing and a thorough write-up. Held back on completeness because no live app or repo was provided to verify — only an overview, an API key and a sample sheet.",
- cs:{complexity:11,claude:14,useful:14,complete:8,innovation:6,presentation:8}},
+{id:"shashi",name:"Shashi Thakur",email:"chunilal.avology@gmail.com",project:"CodeMedic AI",link:"https://codemedic-ai.vercel.app/",extra:[["GitHub","https://github.com/chunilalavology-debug/codemedic-ai"]],cred:"self-signup (errored)",tags:["live","repo"],ct:84,
+ what:"AI full-stack dev platform (10 tools); Next.js/Supabase/Groq+Claude.",
+ mk:{complexity:5,claude:0,useful:0,complete:0,innovation:0,presentation:0},
+ note:"The design element of this website is really nice. It's a really cool idea too. As far as the UI, you did a great job. I tried to sign up and there was an error, so it didn't let me in and I couldn't see what else you built. It looks like a very nice landing page you spun up, but I don't see the actual thought behind the code or functionality — I couldn't test any of what you said. Overall a very nice UI, Shashi."},
 
-{id:"jyoti",name:"Jyoti",email:"jyoti.avology@gmail.com",project:"SEO Project Tool (document only)",
- link:"https://docs.google.com/document/d/1KJwQcaJRKdiVyeQ4_zwgPgQ022n7C44VIWTP3SVQnKY/edit?usp=sharing",extra:[],
- cred:"",tags:[],
- summary:"Submitted as a single Google Doc titled 'SEO Project Tool' with no description, no deployed app and no repository in the email — only the document link. Scope can't be assessed without opening the doc.",
- claudeUse:"Not described in the submission.",
- tokens:"n/a",time:"n/a",
- why:"The thinnest submission in the field — a doc link with no product, demo or detail. Needs the doc opened to score fairly.",
- cs:{complexity:8,claude:7,useful:9,complete:6,innovation:4,presentation:6}},
+{id:"jyoti",name:"Jyoti",email:"jyoti.avology@gmail.com",project:"SEO Project Tool (document only)",link:"https://docs.google.com/document/d/1KJwQcaJRKdiVyeQ4_zwgPgQ022n7C44VIWTP3SVQnKY/edit?usp=sharing",tags:[],ct:40,
+ what:"Submitted as a Google Doc only — no app or link to try.",
+ mk:{complexity:6,claude:6,useful:8,complete:4,innovation:4,presentation:5},
+ note:"This came in as just a Google Doc — no app, no link to anything I could try. There wasn't a tool here for me to evaluate. Please send a working build next time. Thanks, Jyoti."},
 ];
 
-/* ---------- logic ---------- */
-const KEY="cwc2026_scores_v1";
-let store=JSON.parse(localStorage.getItem(KEY)||"{}");
-function save(){localStorage.setItem(KEY,JSON.stringify(store))}
-function csTotal(d){return Object.values(d.cs).reduce((a,b)=>a+b,0)}
-function youTotal(id){const s=store[id]&&store[id].cs;if(!s)return null;let any=false,t=0;for(const[k]of CRITS){const v=Number(s[k]);if(!isNaN(v)&&s[k]!==""&&s[k]!=null){any=true;t+=v}}return any?t:null}
-function rankVal(d){const c=csTotal(d),y=youTotal(d.id);const mode=document.getElementById('rankBy').value;
-  if(mode==='claude')return c; if(mode==='you')return y==null?-1:y; return y==null?c:(c+y)/2;}
+const openSet=new Set();
+function mkT(d){return T(d.mk)}
+function rankVal(d){const m=mkT(d),c=d.ct,mode=document.getElementById('rankBy').value; return mode==='claude'?c:mode==='avg'?(m+c)/2:m;}
 const medals=["🥇","🥈","🥉"];
-
 function render(){
   const q=document.getElementById('q').value.toLowerCase();
-  let list=DATA.filter(d=>!q||(d.name+' '+d.project+' '+d.summary+' '+d.claudeUse).toLowerCase().includes(q));
+  let list=DATA.filter(d=>!q||(d.name+' '+d.project+' '+d.what).toLowerCase().includes(q));
   list.sort((a,b)=>rankVal(b)-rankVal(a));
   const cards=document.getElementById('cards');cards.innerHTML='';
   list.forEach((d,i)=>{
-    const c=csTotal(d),y=youTotal(d.id);
-    const open=openSet.has(d.id);
+    const m=mkT(d);const open=openSet.has(d.id);
     const card=document.createElement('div');card.className='card';
-    const extras=d.extra.map(e=>`<a href="${e[1]}" target="_blank" rel="noopener">${e[0]} ↗</a>`).join(' &nbsp;·&nbsp; ');
-    const credHtml=d.cred?`<div class="lab">Login / credentials</div><div class="cred-box">${d.cred}</div>`:'';
-    let scTable=`<table class="sc"><tr><th class="c1">Criterion</th><th>Max</th><th style="color:var(--accent)">Claude</th><th style="color:var(--accent2)">You</th></tr>`;
-    for(const[k,lbl] of CRITS){
-      const yv=(store[d.id]&&store[d.id].cs&&store[d.id].cs[k]!=null)?store[d.id].cs[k]:'';
-      scTable+=`<tr><td class="c1">${lbl}</td><td>${MAX[k]}</td><td>${d.cs[k]}</td>
-        <td><input data-id="${d.id}" data-k="${k}" type="number" min="0" max="${MAX[k]}" value="${yv}" placeholder="–"></td></tr>`;
-    }
-    scTable+=`<tr class="tot"><td class="c1">TOTAL</td><td>100</td><td style="color:var(--accent)">${c}</td><td style="color:var(--accent2)" id="ytot-${d.id}">${y==null?'–':y}</td></tr></table>`;
-    const noteVal=(store[d.id]&&store[d.id].note)?store[d.id].note:'';
+    const extras=(d.extra||[]).map(e=>`<a href="${e[1]}" target="_blank" rel="noopener">${e[0]} ↗</a>`).join(' &nbsp;·&nbsp; ');
+    const credHtml=d.cred?`<div class="cred-box">🔑 ${d.cred}</div>`:'';
+    let rows='';for(const[k,lbl]of CRITS){rows+=`<tr><td class="c1">${lbl}</td><td>${MAX[k]}</td><td style="color:var(--claude)">—</td><td style="color:var(--mk)">${d.mk[k]}</td></tr>`;}
     card.innerHTML=`
       <div class="chead" data-toggle="${d.id}">
         <div class="rank">${i<3?`<div class="medal">${medals[i]}</div>`:`<div class="num">${i+1}</div>`}<div class="lbl">rank</div></div>
         <div class="ctitle">
           <h3>${d.project}</h3>
           <div class="who">${d.name} · <a href="mailto:${d.email}">${d.email}</a></div>
-          <div class="tags">${d.tags.map(t=>`<span class="pill ${t}">${t==='live'?'LIVE APP':t==='repo'?'REPO':t==='cred'?'HAS LOGIN':t}</span>`).join('')}
-            <span class="pill">${d.tokens} tokens</span><span class="pill">${d.time}</span></div>
+          <div class="what">${d.what}</div>
+          <div class="tags">${(d.tags||[]).map(t=>`<span class="pill ${t}">${t==='live'?'LIVE':t==='repo'?'REPO':t==='cred'?'LOGIN':t==='verified'?'✓ VERIFIED':t==='broken'?'BROKEN':t}</span>`).join('')}</div>
         </div>
         <div class="scoreboxes">
-          <div class="sbox claude"><div class="v">${c}</div><div class="k">Claude</div></div>
-          <div class="sbox you"><div class="v" id="ybox-${d.id}">${y==null?'–':y}</div><div class="k">You</div></div>
+          <div class="sbox mk"><div class="v">${m}</div><div class="k">Makabi</div></div>
+          <div class="sbox claude"><div class="v">${d.ct}</div><div class="k">Claude</div></div>
         </div>
       </div>
       <div class="body ${open?'open':''}" id="body-${d.id}">
         <div class="grid">
           <div>
-            <div class="lab">What it is</div><div class="val">${d.summary}</div>
-            <div class="lab">How Claude / vibe-coding was used</div><div class="val">${d.claudeUse}</div>
-            <div class="estrow"><div class="est">Est. tokens: <b>${d.tokens}</b></div><div class="est">Est. build time: <b>${d.time}</b></div></div>
-            <div class="lab">Why it could win</div><div class="why val">${d.why}</div>
+            <div class="lab">Master Makabi's review</div>
+            <div class="note">${d.note}</div>
             <div class="lab">Links</div><div class="val"><a href="${d.link}" target="_blank" rel="noopener">${d.link} ↗</a>${extras?'<br>'+extras:''}</div>
             ${credHtml}
           </div>
           <div>
-            <div class="lab">Scorecard — type your scores</div>
-            ${scTable}
-            <div class="note"><div class="lab">Your notes</div><textarea data-note="${d.id}" placeholder="Notes, verdict, things to verify live…">${noteVal}</textarea></div>
-            <div class="disclaimer">Claude's scores are preliminary, from the submission email — not yet live-verified.</div>
+            <div class="lab">Scorecard</div>
+            <table class="sc"><tr><th class="c1">Criterion</th><th>Max</th><th style="color:var(--claude)">Claude</th><th style="color:var(--mk)">Makabi</th></tr>
+            ${rows}
+            <tr class="tot"><td class="c1">TOTAL</td><td>100</td><td style="color:var(--claude)">${d.ct}</td><td style="color:var(--mk)">${m}</td></tr></table>
           </div>
         </div>
       </div>`;
     cards.appendChild(card);
   });
-  bind();updateStats();
-}
-
-const openSet=new Set();
-function bind(){
-  document.querySelectorAll('[data-toggle]').forEach(el=>el.onclick=e=>{
-    if(e.target.closest('a'))return;
-    const id=el.getAttribute('data-toggle');const b=document.getElementById('body-'+id);
-    b.classList.toggle('open');if(b.classList.contains('open'))openSet.add(id);else openSet.delete(id);
-  });
-  document.querySelectorAll('input[type=number][data-id]').forEach(inp=>{
-    inp.oninput=()=>{
-      const id=inp.dataset.id,k=inp.dataset.k;let v=inp.value;
-      if(v!==''){v=Math.max(0,Math.min(MAX[k],Number(v)));}
-      store[id]=store[id]||{cs:{}};store[id].cs=store[id].cs||{};store[id].cs[k]=v;save();
-      const yt=youTotal(id);
-      document.getElementById('ytot-'+id).textContent=yt==null?'–':yt;
-      document.getElementById('ybox-'+id).textContent=yt==null?'–':yt;
-      updateStats();
-    };
-    inp.onblur=()=>{render();}
-  });
-  document.querySelectorAll('textarea[data-note]').forEach(t=>{
-    t.oninput=()=>{const id=t.dataset.note;store[id]=store[id]||{cs:{}};store[id].note=t.value;save();};
-  });
-}
-function updateStats(){
-  const scored=DATA.filter(d=>youTotal(d.id)!=null).length;
-  document.getElementById('stats').textContent=`${DATA.length} projects · ${scored} scored by you · ranked by ${document.getElementById('rankBy').selectedOptions[0].text}`;
+  document.querySelectorAll('[data-toggle]').forEach(el=>el.onclick=e=>{if(e.target.closest('a'))return;const id=el.getAttribute('data-toggle');const b=document.getElementById('body-'+id);b.classList.toggle('open');if(b.classList.contains('open'))openSet.add(id);else openSet.delete(id);});
+  document.getElementById('stats').textContent=`${DATA.length} projects · ranked by ${document.getElementById('rankBy').selectedOptions[0].text}`;
 }
 document.getElementById('rankBy').onchange=render;
 document.getElementById('q').oninput=render;
 document.getElementById('expandAll').onclick=()=>{DATA.forEach(d=>openSet.add(d.id));render();};
 document.getElementById('collapseAll').onclick=()=>{openSet.clear();render();};
-document.getElementById('reset').onclick=()=>{if(confirm('Clear all of YOUR scores and notes?')){store={};save();render();}};
 render();
 </script>
 </body>
