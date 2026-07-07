@@ -76,7 +76,7 @@
 <body>
 <header>
   <h1>🏆 Claude World Cup 2026 — Judging Bulletin Board</h1>
-  <div class="sub">Avology Technologies · 29 submissions forwarded by Aakash Deep · Master Makabi's review console</div>
+  <div class="sub">Avology Technologies · 38 submissions forwarded by Aakash Deep · Master Makabi's review console</div>
 </header>
 
 <div class="bar">
@@ -167,6 +167,15 @@ const DATA=[
  why:"The broadest product surface of any submission — a credible internal ops + client-collaboration platform, deployed with a working admin login.",
  cs:{complexity:17,claude:17,useful:16,complete:14,innovation:7,presentation:8}},
 
+{id:"tushar",name:"Tushar Tyagi",email:"tushartyagi.avology@gmail.com",project:"FixMyCode (self-healing WP plugin)",
+ link:"https://github.com/tushartyagiavology/fixmycode-wordpress-plugin",extra:[],
+ cred:"Demo video (FixMyCodeDemo.mp4) attached",tags:["repo"],
+ summary:"An autonomous self-healing runtime interceptor plugin for WordPress. It hooks the PHP engine to catch fatal errors (E_ERROR/E_PARSE — the 'White Screen of Death') before the site goes offline, extracts the exact file/line/context, generates a sandboxed AI risk assessment + plain-language root cause, and offers a one-click 'atomic mutation' patch that swaps the vulnerable code for a safe fix — all inside the WP admin. Stack: WP hooks + $wpdb/MySQL; Claude as architectural collaborator + Google AI Core API at runtime.",
+ claudeUse:"Deep Claude integration in the build: designing the global PHP error-interception hook architecture without infinite recursion, refining API gateway logic, and prompt-engineering strict JSON output for reliable php json_decode() parsing.",
+ tokens:"~300k–550k",time:"~18–30 hrs",
+ why:"One of the most ambitious new entries — autonomous software self-healing, not just code generation, with genuinely deep Claude architectural involvement. Held back only because it ships as a repo + video (no hosted demo to click).",
+ cs:{complexity:15,claude:17,useful:15,complete:11,innovation:9,presentation:8}},
+
 {id:"dheeraj",name:"Dheeraj Singh",email:"dheeraj.avology@gmail.com",project:"WP Guardian AI",
  link:"https://agent-6a38daf00e7ad8--benevolent-creponne-3e3c4d.netlify.app/",extra:[],
  cred:"",tags:["live"],
@@ -230,6 +239,15 @@ const DATA=[
  why:"A broad, deployed SEO suite with a real login that maps onto a core agency service line.",
  cs:{complexity:13,claude:14,useful:15,complete:14,innovation:6,presentation:7}},
 
+{id:"deepak",name:"Deepak Sharma",email:"deepaksharma.avology@gmail.com",project:"SkillCraft — Autonomous Backend API & Test Scaffolder",
+ link:"https://www.loom.com/share/b60ba602efc94654846cc4a79e9ca3e7",extra:[],
+ cred:"files.zip (60.7 KB) + Loom demo video",tags:[],
+ summary:"A developer-productivity tool that shifts the engineer from writing repetitive code to acting as an AI orchestrator: input a high-level feature requirement and SkillCraft runs the entire backend-API generation and quality-assurance cycle on its own. Delivered as a Loom demo video + a code zip (no hosted app or repo link).",
+ claudeUse:"AI runs the autonomous generation + QA loop from a single high-level requirement.",
+ tokens:"~150k–300k",time:"~10–18 hrs",
+ why:"Ambitious autonomous-generation concept (akin to AI Feature Forge, for backend + tests). Held back on completeness — video + zip only, nothing hosted or in a repo to open.",
+ cs:{complexity:14,claude:15,useful:15,complete:9,innovation:8,presentation:8}},
+
 {id:"anu",name:"Anu Deol",email:"anu.avology@gmail.com",project:"SQL CRUD Generator",
  link:"https://github.com/anu-avology26/sql-crud-generator-module",extra:[],
  cred:"Google Docs technical documentation provided",tags:["repo"],
@@ -238,6 +256,15 @@ const DATA=[
  tokens:"~150k–300k",time:"~12–22 hrs",
  why:"Strong engineering discipline — a privacy-preserving, self-hosted developer package. Repo-only delivery caps the completeness score.",
  cs:{complexity:15,claude:13,useful:15,complete:11,innovation:7,presentation:7}},
+
+{id:"ricky",name:"Ricky Gupta",email:"rickygupta95@gmail.com",project:"EIN Industry Wire (WordPress plugin)",
+ link:"https://wordpress-1180784-6520892.cloudwaysapps.com/",extra:[],
+ cred:"devavology12@gmail.com  /  J72FUYeByd",tags:["live","cred"],
+ summary:"A WordPress plugin deployed on a Cloudways-hosted site: RSS news aggregation, AI-generated headlines and summaries, an editorial review queue, a frontend news feed, and stock-ticker integration — an automated newsroom / PR-wire.",
+ claudeUse:"AI generates the headlines and summaries in the editorial pipeline; built with AI assistance.",
+ tokens:"~180k–350k",time:"~12–20 hrs",
+ why:"A deployed, login-gated WordPress product with a real editorial workflow and AI summarization — directly relevant to content/PR services.",
+ cs:{complexity:13,claude:13,useful:14,complete:13,innovation:6,presentation:7}},
 
 {id:"gautam",name:"Gautam Dhiman",email:"gautamd.avology@gmail.com",project:"Web2Figma (Website → Figma Importer)",
  link:"https://w2f.vercel.app/",extra:[],
@@ -248,6 +275,24 @@ const DATA=[
  why:"Clever two-part architecture (web app + native Figma plugin) solving a real design-handoff pain. Needs working test credentials to fully verify.",
  cs:{complexity:13,claude:14,useful:14,complete:12,innovation:8,presentation:6}},
 
+{id:"sandeep",name:"Sandeep Kumar",email:"sandeep1avology@gmail.com",project:"liquid-ai (image → responsive section)",
+ link:"https://liquidai-conp.onrender.com/",extra:[],
+ cred:"",tags:["live"],
+ summary:"An image-to-code tool: upload a screenshot or design image and liquid-ai generates the corresponding web section with both a desktop layout and a fully responsive mobile layout. Deployed on Render.",
+ claudeUse:"AI vision-to-code turns a design image into responsive section markup.",
+ tokens:"~120k–220k",time:"~8–14 hrs",
+ why:"A practical design-to-code accelerator, deployed and clickable. Similar territory to Web2Figma but simpler and single-purpose.",
+ cs:{complexity:12,claude:13,useful:13,complete:12,innovation:7,presentation:6}},
+
+{id:"lakhvir",name:"Lakhvir Singh",email:"lakhvir.avology@gmail.com",project:"Website Validator",
+ link:"https://website-validator-peach.vercel.app/",extra:[["GitHub","https://github.com/Lakhvirsingh0/website-validator"]],
+ cred:"webvalidator-prompt.md (12.1 KB) attached",tags:["live","repo"],
+ summary:"A deployed 'Website Validator' web app (preview on Vercel, code on GitHub) that checks/validates websites; the build prompt is attached as a markdown file. The email itself is link-only, so exact feature scope would come from the app/prompt.",
+ claudeUse:"Built with Claude from an attached prompt (webvalidator-prompt.md).",
+ tokens:"~120k–220k",time:"~8–14 hrs",
+ why:"Deployed and open-source with a clean handoff (live link + repo + prompt). Light on described detail in the email.",
+ cs:{complexity:12,claude:12,useful:13,complete:13,innovation:6,presentation:7}},
+
 {id:"swati",name:"Swati Mishra",email:"swatimishra.avology@gmail.com",project:"Shopify Schema Architect",
  link:"https://schema-architect-tool.netlify.app/",extra:[],
  cred:"",tags:["live"],
@@ -256,6 +301,15 @@ const DATA=[
  tokens:"~150k–280k",time:"~10–16 hrs",
  why:"Focused, deployed developer tool that removes real boilerplate for Shopify theme work (complements SchemaFlow as a lighter, client-side option).",
  cs:{complexity:13,claude:12,useful:14,complete:13,innovation:6,presentation:7}},
+
+{id:"sachinkumar",name:"Sachin Kumar",email:"sachinkumar.avology@gmail.com",project:"APIForge — API Testing Platform",
+ link:"https://github.com/sachin-kumar001/api-tester",extra:[],
+ cred:"",tags:["repo"],
+ summary:"A web-based API testing platform (Postman-style): test REST APIs across GET/POST/PUT/DELETE/PATCH, analyze errors with plain-language explanations, auto-generate API documentation, and produce ready-to-use code snippets in multiple languages (JavaScript, Python, PHP, Java, C#), with a modern real-time request/response dashboard.",
+ claudeUse:"AI powers the error explanations, documentation and multi-language snippet generation; built with AI assistance. Repo only.",
+ tokens:"~150k–280k",time:"~10–18 hrs",
+ why:"A useful all-in-one API dev tool. Repo-only delivery (no hosted demo) caps completeness.",
+ cs:{complexity:13,claude:12,useful:14,complete:10,innovation:6,presentation:7}},
 
 {id:"megha",name:"Megha",email:"megha.avology@gmail.com",project:"WordPress Developer Assistant Dashboard",
  link:"https://wp-dev-assistant.netlify.app/",extra:[],
@@ -284,6 +338,15 @@ const DATA=[
  why:"A clean, deployed audit tool with a business-impact/ROI framing that's easy to put in front of clients.",
  cs:{complexity:11,claude:12,useful:13,complete:13,innovation:5,presentation:6}},
 
+{id:"rakesh",name:"Rakesh Kumar",email:"rakeshkumar.avology@gmail.com",project:"Professional SEO Audit Tool",
+ link:"https://flourishing-alfajores-a37a04.netlify.app/",extra:[],
+ cred:"",tags:["live"],
+ summary:"A lightweight, fully client-side SEO website audit tool (single index.html, HTML/CSS/vanilla JS, no backend or external APIs). Enter a URL and it checks title tags, meta descriptions, headings, images, links, structured data and content metrics, marking CORS-blocked items as 'Browser Restricted'. SaaS-style dashboard with SEO scores, filtering, exportable JSON/HTML reports, localStorage history and light/dark mode.",
+ claudeUse:"Built with Claude from a detailed single-file prompt; all analysis runs in-browser (no AI at runtime).",
+ tokens:"~80k–160k",time:"~6–12 hrs",
+ why:"A clean, honest (no fake data) client-side SEO auditor, deployed as a single file. Overlaps with several other SEO entries.",
+ cs:{complexity:11,claude:11,useful:13,complete:13,innovation:5,presentation:7}},
+
 {id:"suraj",name:"Suraj Kumar",email:"surajk.avology@gmail.com",project:"Website Asset Extractor AI",
  link:"https://website-asset-extractor.vercel.app/",extra:[],
  cred:"PDF documentation + demo video attached",tags:["live"],
@@ -310,6 +373,15 @@ const DATA=[
  tokens:"~120k–220k",time:"~8–14 hrs",
  why:"Lightweight internal coordination tool that removes real WhatsApp/email overhead; the AI summariser is the standout feature.",
  cs:{complexity:12,claude:14,useful:15,complete:13,innovation:6,presentation:7}},
+
+{id:"monikasharma",name:"Monika Sharma",email:"monikasharma.avology@gmail.com",project:"Laravel Bug Fix Assistant",
+ link:"https://github.com/Monika678/laravel-bug-fix-assistant",extra:[],
+ cred:"",tags:["repo"],
+ summary:"An AI web app where developers paste any Laravel exception/error and get an AI explanation — root cause, why it occurred, how to fix it, and suggested corrected code. Built on Laravel 13 + Groq AI API (Llama 3.3 70B), PHP 8.3, Blade, Bootstrap. Repo only, no hosted demo.",
+ claudeUse:"Runtime AI is Groq/Llama (built for the contest); the app was assembled with AI assistance.",
+ tokens:"~120k–220k",time:"~8–14 hrs",
+ why:"A focused developer aid for Laravel error triage. Repo-only delivery and Groq (not Claude) as the runtime model cap the score.",
+ cs:{complexity:12,claude:11,useful:13,complete:10,innovation:5,presentation:7}},
 
 {id:"vikrambdm",name:"Vikram (BDM)",email:"vikrambdm.avology@gmail.com",project:"CRM — Lead/Bid Tracker",
  link:"https://claude.ai/public/artifacts/18d09a26-2ec0-4bd3-9487-f452d2460f85",extra:[],
@@ -353,17 +425,26 @@ const DATA=[
  summary:"More a workflow/proof-of-concept than a product: a process for using Claude to generate Elementor theme files from approved design requirements and install them into builders (Elementor/WordPress/Shopify) so only minor refinements remain. Ships a small sample Elementor site as proof of concept.",
  claudeUse:"Claude generates theme/layout files; the submission proposes scaling the workflow across CMS platforms.",
  tokens:"~20k–60k",time:"~2–4 hrs",
- why:"A reasonable efficiency idea, but it's a workflow + sample site rather than a built application — the lightest submission in the field.",
+ why:"A reasonable efficiency idea, but it's a workflow + sample site rather than a built application — the lightest built submission in the field.",
  cs:{complexity:8,claude:9,useful:10,complete:8,innovation:5,presentation:5}},
 
 {id:"surajtester",name:"Suraj Tester",email:"surajavology@gmail.com",project:"AI-Powered Bug Report Generator",
  link:"mailto:surajavology@gmail.com",extra:[],
  cred:"Anthropic API key + sample bug sheet (Loren AI bug sheet.xlsx) provided in the email — key withheld here; rotate it",tags:[],
- summary:"A QA productivity tool that uses Claude AI to automatically generate professional, structured bug reports from multiple input sources — bug descriptions, bug sheets, spreadsheets, text files and screenshots. It analyzes context, writes bug titles/summaries, suggests severity & priority, produces expected-vs-actual results and steps to reproduce, and handles individual bugs or bulk bug-sheet uploads. Aimed at QA engineers, manual testers and small teams. NOTE: the submission is a written overview plus an Anthropic API key and a sample bug sheet — no hosted demo or repository link was included.",
+ summary:"A QA productivity tool that uses Claude AI to automatically generate professional, structured bug reports from multiple input sources — bug descriptions, bug sheets, spreadsheets, text files and screenshots. It analyzes context, writes bug titles/summaries, suggests severity & priority, produces expected-vs-actual results and steps to reproduce, and handles individual bugs or bulk bug-sheet uploads. NOTE: the submission is a written overview plus an Anthropic API key and a sample bug sheet — no hosted demo or repository link was included.",
  claudeUse:"Claude is the core reasoning engine — understanding bug descriptions and testing context, interpreting uploaded sheets/screenshots, and producing standardized bug documentation. Integrated via the Anthropic API (submitter supplied a key).",
  tokens:"~80k–180k",time:"~6–12 hrs",
  why:"Targets a real, repetitive QA pain (bug documentation) with bulk-sheet processing and a thorough write-up. Held back on completeness because no live app or repo was provided to verify — only an overview, an API key and a sample sheet.",
  cs:{complexity:11,claude:14,useful:14,complete:8,innovation:6,presentation:8}},
+
+{id:"jyoti",name:"Jyoti",email:"jyoti.avology@gmail.com",project:"SEO Project Tool (document only)",
+ link:"https://docs.google.com/document/d/1KJwQcaJRKdiVyeQ4_zwgPgQ022n7C44VIWTP3SVQnKY/edit?usp=sharing",extra:[],
+ cred:"",tags:[],
+ summary:"Submitted as a single Google Doc titled 'SEO Project Tool' with no description, no deployed app and no repository in the email — only the document link. Scope can't be assessed without opening the doc.",
+ claudeUse:"Not described in the submission.",
+ tokens:"n/a",time:"n/a",
+ why:"The thinnest submission in the field — a doc link with no product, demo or detail. Needs the doc opened to score fairly.",
+ cs:{complexity:8,claude:7,useful:9,complete:6,innovation:4,presentation:6}},
 ];
 
 /* ---------- logic ---------- */
