@@ -23,6 +23,7 @@
   .stats{margin-left:auto;font-size:12px;color:var(--mut)}
   .legend{padding:13px 28px;color:var(--mut);font-size:12.5px;border-bottom:1px solid var(--line);background:#eef1f6}
   .legend b{color:var(--txt)}
+  .crit{display:inline-block;background:#fff;border:1px solid var(--line);border-radius:20px;padding:3px 10px;margin:3px 4px 0 0;font-size:11.5px}
   .wrap{padding:20px 28px 80px;max-width:1120px;margin:0 auto}
   .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;margin:0 0 14px;overflow:hidden;box-shadow:0 1px 2px rgba(20,30,50,.04)}
   .chead{display:flex;align-items:flex-start;gap:14px;padding:15px 18px;cursor:pointer}
@@ -88,7 +89,7 @@
 
 <div class="legend">
   <b>How Makabi judged:</b> does it actually <b>work and can I use it right now</b> (weighted heaviest) · real practical value to LOREN AI · idea &amp; effort still get credit, but broken sign-ins, repo-only, and "couldn't test it" get docked hard.
-  <span style="display:block;margin-top:6px">Criteria (100): Complexity 20 · Claude/Vibe-coding 25 · Usefulness 20 · Completeness/Works-now 15 · Innovation 10 · Presentation 10. <b>✓ Verified</b> = Makabi opened and tested it this pass.</span>
+  <span style="display:block;margin-top:6px">Criteria (100): Complexity 20 · Claude/Vibe-coding 25 · Usefulness 20 · Completeness/Works-now 15 · Innovation 10 · Presentation 10. <b>✓ Live-verified</b> = Makabi opened and tested it this pass.</span>
 </div>
 
 <div class="wrap" id="cards"></div>
@@ -119,6 +120,11 @@ const DATA=[
  what:"Local/directory SEO content suite — bulk 1000-word location pages, metadata for 100 cities at once, keywords, schema, FAQs, internal links, export. In-browser, no login.",
  mk:{complexity:15,claude:16,useful:18,complete:14,innovation:8,presentation:8},
  note:"This one's a workhorse — 16 working tools and it cranks out bulk location pages, metadata, schema and FAQs right in the browser, no login. That kind of local-SEO scale is genuinely useful for client work. Strong and usable today. Great job, Arvind."},
+
+{id:"abhisheksharma",name:"Abhishek Sharma",email:"abhisheksharma.avology@gmail.com",project:"Automated Form Testing Framework",link:"https://drive.google.com/file/d/1HzsBvzwUugqZO7c9hk7cp-evYgXdHPHK/view?usp=sharing",cred:"form-testing-framework.zip + demo video (Google Drive)",tags:[],ct:72,
+ what:"Python framework that auto-tests web forms — 13 positive + 5 negative/security tests; found real bugs (SQL injection, validation gaps) and was already run on our OnePropertyMarket 'Create Listing' module. ~120x faster than manual QA.",
+ mk:{complexity:14,claude:15,useful:16,complete:9,innovation:8,presentation:8},
+ note:"Really like that this one's grounded in something real — a Python form-testing framework that actually found genuine bugs (including a SQL injection) and you already ran it against our OnePropertyMarket 'Create Listing' module. That's exactly the practical value I want. Only reason it's not higher: it came as a Drive video and a zip, so I couldn't click in and run it myself. But the real-world tie-in speaks for itself. Nice work, Abhishek."},
 
 {id:"dheeraj",name:"Dheeraj Singh",email:"dheeraj.avology@gmail.com",project:"WP Guardian AI",link:"https://agent-6a38daf00e7ad8--benevolent-creponne-3e3c4d.netlify.app/",tags:["live","verified"],ct:78,
  what:"Multi-agent site scanner — tech stack, SEO, security, Core Web Vitals, malware, one verdict.",
